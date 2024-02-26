@@ -11,6 +11,7 @@ import com.cooksys.groupfinal.entities.Team;
 public interface TeamMapper {
 	
 	TeamDto entityToDto(Team team);
+    Team dtoToEntity(TeamDto teamDto);
 
   Set<TeamDto> entitiesToDtos(Set<Team> teams);
 
