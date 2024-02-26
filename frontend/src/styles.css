@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --bg-color: #051622;
+    --header-color: #1BA098;
+    --box-color: #0B2D45;
+    --text-color: #FFFFFF;
+    --select-color: #5533FF;
+    --loggedin-color: #F24E1E;
+    --outline-color: #DEB992;
+    --active-color: #22DD2A;
+    --inactive-color: #DF0F0F;
+    --main-font-family: 'Inter', system-ui, sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+}
