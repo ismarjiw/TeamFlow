@@ -3,11 +3,9 @@ package com.cooksys.groupfinal.entities;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import lombok.Data;
@@ -21,9 +19,10 @@ public class Announcement {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	@CreatedDate
-    private Timestamp date = Timestamp.valueOf(LocalDateTime.now());
+
+	@CreationTimestamp
+	@Column(name = "created_at", updatable = false)
+    private Timestamp date ;
 	
 	private String title;
 	

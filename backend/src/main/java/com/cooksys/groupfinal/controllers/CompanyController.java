@@ -29,7 +29,10 @@ public class CompanyController {
     public Set<AnnouncementDto> getAllAnnouncements(@PathVariable Long id) {
         return companyService.getAllAnnouncements(id);
     }
-	
+    @PostMapping("/{id}/announcements")
+    public AnnouncementDto createAnnouncement(@PathVariable Long id, @RequestBody AnnouncementDto announcement){
+        return companyService.createAnnouncement(id, announcement);
+    }
 	@GetMapping("/{id}/teams")
     public Set<TeamDto> getAllTeams(@PathVariable Long id) {
         return companyService.getAllTeams(id);
