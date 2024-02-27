@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Create Team</h2>
+<form [formGroup]="teamForm">
+  <mat-form-field appearance="fill">
+  <mat-label>Team Name</mat-label>
+  <input matInput formControlName="name" required>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Description</mat-label>
+  <textarea matInput formControlName="description" required></textarea>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Select Members</mat-label>
+  <mat-select formControlName="selectedMembers" multiple>
+    <mat-option *ngFor="let member of members">{{ member }}</mat-option>
+  </mat-select>
+</mat-form-field>
+<div mat-dialog-actions>
+  <button mat-button (click)="onSubmit()" type="submit">Create Team</button>
+</div>
+</form>
+

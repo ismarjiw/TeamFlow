@@ -3,6 +3,7 @@
     --header-color: #1BA098;
     --box-color: #0B2D45;
     --text-color: #FFFFFF;
+    --secondary-text-color: #D3D3D3;
     --select-color: #5533FF;
     --loggedin-color: #F24E1E;
     --outline-color: #DEB992;
@@ -16,3 +17,5 @@ html, body {
     padding: 0;
     background-color: var(--bg-color);
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

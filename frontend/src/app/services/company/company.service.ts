@@ -26,15 +26,21 @@ export class CompanyService {
     }
   ];
 
-  getSelectedCompany(selectedCompany: string) {
-    // Find matching company
-    const company = this.companies.find(c => c.name === selectedCompany);
+  // getSelectedCompany(selectedCompany: string) {
+  //   // Find matching company
+  //   const company = this.companies.find(c => c.name === selectedCompany);
 
-    return of({
-      // Return fake data for selected company  
-      id: company?.id, 
-      name: company?.name  
-    });
+  //   return of({
+  //     // Return fake data for selected company  
+  //     id: company?.id, 
+  //     name: company?.name  
+  //   });
+  // }
+
+  getSelectedCompany(selectedCompany: string): Observable<any> {
+    return of(
+      this.companies.find(c => c.name === selectedCompany)
+    );
   }
 
 }
