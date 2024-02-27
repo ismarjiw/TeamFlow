@@ -22,4 +22,7 @@ public interface CompanyService {
 
 	CompanyDto getCompany(Long id);
 
+	TeamDto createTeam(Long id, TeamDto teamDto);
+
+	AnnouncementDto createAnnouncement(Long id, AnnouncementDto announcement);
 }

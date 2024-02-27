@@ -1,13 +1,16 @@
 package com.cooksys.groupfinal.services.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import com.cooksys.groupfinal.dtos.*;
+import com.cooksys.groupfinal.mappers.*;
+import com.cooksys.groupfinal.repositories.AnnouncementRepository;
+import com.cooksys.groupfinal.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import com.cooksys.groupfinal.dtos.AnnouncementDto;
@@ -43,7 +46,10 @@ public class CompanyServiceImpl implements CompanyService {
 	private final AnnouncementMapper announcementMapper;
 	private final TeamMapper teamMapper;
 	private final ProjectMapper projectMapper;
-	
+	private final BasicUserMapper basicUserMapper;
+	private final UserRepository userRepository;
+	private final AnnouncementRepository announcementRepository;
+
 	private Company findCompany(Long id) {
         Optional<Company> company = companyRepository.findById(id);
         if (company.isEmpty()) {
@@ -63,7 +69,7 @@ public class CompanyServiceImpl implements CompanyService {
         }
         return team.get();
     }
-	
+
 	@Override
 	public Set<FullUserDto> getAllUsers(Long id) {
 		Company company = findCompany(id);
@@ -106,6 +112,40 @@ public class CompanyServiceImpl implements CompanyService {
 		Set<Company> companies = new HashSet<>();
 		companies.addAll(companyRepository.findAll());
 		return companyMapper.entitiesToDtos(companies);
+	}
+
+	@Override
+	public TeamDto createTeam(Long id, TeamDto teamDto) {
+		Set<User> teammates=new HashSet<>();
+		for (BasicUserDto user : teamDto.getTeammates()){
+			Optional<User> optionalUser = userRepository.findById(user.getId());
+			if (optionalUser.isPresent()) {
+				User teammate= optionalUser.get();
+				teammates.add(teammate);
+			}
+		}
+
+		Team team = teamMapper.dtoToEntity(teamDto);
+		team.setTeammates(teammates);
+
+		Company company = findCompany(id);
+		team.setCompany(company);
+		team=teamRepository.save(team);
+		return teamMapper.entityToDto(team);
+	}
+
+	@Override
+	public AnnouncementDto createAnnouncement(Long id, AnnouncementDto announcementDto) {
+		Announcement announcement = announcementMapper.dtoToEntity(announcementDto);
+		Optional<User> optionaluser=userRepository.findById(announcement.getAuthor().getId());
+		if (optionaluser.isPresent()){
+			User user = optionaluser.get();
+			announcement.setAuthor(user);
+		}
+		Company company = findCompany(id);
+		announcement.setCompany(company);
+		announcement=announcementRepository.save(announcement);
+		return announcementMapper.entityToDto(announcement);
 	}
 
 }
