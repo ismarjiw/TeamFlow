@@ -13,12 +13,22 @@ import com.cooksys.groupfinal.repositories.AnnouncementRepository;
 import com.cooksys.groupfinal.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
+import com.cooksys.groupfinal.dtos.AnnouncementDto;
+import com.cooksys.groupfinal.dtos.FullUserDto;
+import com.cooksys.groupfinal.dtos.ProjectDto;
+import com.cooksys.groupfinal.dtos.CompanyDto;
+import com.cooksys.groupfinal.dtos.TeamDto;
 import com.cooksys.groupfinal.entities.Announcement;
 import com.cooksys.groupfinal.entities.Company;
 import com.cooksys.groupfinal.entities.Project;
 import com.cooksys.groupfinal.entities.Team;
 import com.cooksys.groupfinal.entities.User;
 import com.cooksys.groupfinal.exceptions.NotFoundException;
+import com.cooksys.groupfinal.mappers.AnnouncementMapper;
+import com.cooksys.groupfinal.mappers.CompanyMapper;
+import com.cooksys.groupfinal.mappers.ProjectMapper;
+import com.cooksys.groupfinal.mappers.TeamMapper;
+import com.cooksys.groupfinal.mappers.FullUserMapper;
 import com.cooksys.groupfinal.repositories.CompanyRepository;
 import com.cooksys.groupfinal.repositories.TeamRepository;
 import com.cooksys.groupfinal.services.CompanyService;
@@ -30,6 +40,7 @@ import lombok.RequiredArgsConstructor;
 public class CompanyServiceImpl implements CompanyService {
 	
 	private final CompanyRepository companyRepository;
+	private final CompanyMapper companyMapper;
 	private final TeamRepository teamRepository;
 	private final FullUserMapper fullUserMapper;
 	private final AnnouncementMapper announcementMapper;
@@ -46,6 +57,10 @@ public class CompanyServiceImpl implements CompanyService {
         }
         return company.get();
     }
+	
+	public CompanyDto getCompany(Long id) {
+		return companyMapper.entityToDto(findCompany(id));
+	}
 	
 	private Team findTeam(Long id) {
         Optional<Team> team = teamRepository.findById(id);
@@ -90,6 +105,13 @@ public class CompanyServiceImpl implements CompanyService {
 		team.getProjects().forEach(filteredProjects::add);
 		filteredProjects.removeIf(project -> !project.isActive());
 		return projectMapper.entitiesToDtos(filteredProjects);
+	}
+	
+	@Override
+	public Set<CompanyDto> getAllCompanies(){
+		Set<Company> companies = new HashSet<>();
+		companies.addAll(companyRepository.findAll());
+		return companyMapper.entitiesToDtos(companies);
 	}
 
 	@Override
