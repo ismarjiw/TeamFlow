@@ -34,9 +34,11 @@ export class CompanylistselectorComponent {
     if (this.companyForm.valid) {
       this.companyService.getSelectedCompany(this.companyForm.value.company)
         .subscribe(company => {
-          console.log(company);
+          console.log(company); // id and name of company 
           this.companySelected.emit(company);
-          // this.router.navigateByUrl('/teams}'); // will route user to teams page
+          this.router.navigateByUrl('/teams'); // will eventually route user to the teams page that's specific to the company they pick
+
+          // this.router.navigate(['/teams', company.id]); === /teams/:companyId
         });
     }
   }
