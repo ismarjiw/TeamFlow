@@ -1,2 +1,11 @@
-<app-announcement></app-announcement>
-
+<app-navmenu></app-navmenu>
+<app-navmenu-mobile></app-navmenu-mobile>
+<div>
+	<div>
+		<h1>Announcements</h1>
+		<button (click)="openCreateAnnouncement()">New</button>
+	</div>
+	<div>
+		<app-announcement *ngFor="let announcement of announcements" [announcement]="announcement"></app-announcement>
+	</div>
+</div>

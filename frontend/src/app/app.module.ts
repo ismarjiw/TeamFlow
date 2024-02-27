@@ -16,7 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
-import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
+import { CreateAnnouncementComponent } from './announcements/create-announcement/create-announcement.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,12 @@ import { CreateAnnouncementComponent } from './create-announcement/create-announ
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
