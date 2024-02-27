@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { UsersService } from '../services/users/users.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserEntry, AdduserComponent } from '../adduser/adduser.component';
+import { take } from 'rxjs';
 
 export interface UserEntry {
   name: string;
@@ -10,8 +11,7 @@ export interface UserEntry {
   admin: string;
   status: string;
 }
-
-// change interface to include user id later from backend -> modify as needed in UsersService 
+// change interface to include user id later from backend -> modify as needed in UsersService -> this was just for test purposes 
 
 const USER_DATA: UserEntry[] = [
   {name: 'ismarji', email: 'me@gmail.com', active: 'YES', admin: 'YES', status: 'JOINED'},
@@ -28,37 +28,30 @@ const USER_DATA: UserEntry[] = [
 export class UserregistryComponent {
 
   displayedColumns: string[] = ['name', 'email', 'active', 'admin', 'status'];
-  dataSource = USER_DATA;
+  dataSource = USER_DATA; // initial test data -> replace [dataSource] with "dataSource" in table to see
 
-  users: UserEntry[] = []; // will load users array in html once can grab data from backend 
+  users: any[] = []; 
   isLoading = false;
 
   constructor(private usersService: UsersService,
-    public dialog: MatDialog) {}
+    public dialog: MatDialog,
+    ) {}
 
   ngOnInit() {
-    this.usersService.getCreatedUsers()
-  .subscribe(users => {
-    this.users = users;
-    console.log(this.users);
-  });
+    this.loadUsers();
+  }
 
-    // this.isLoading = true;
-    // this.usersService.getAllUsers().subscribe((users: UserEntry[]) => {
-    //   this.users = users;
-    //   this.isLoading = false; 
-    // });
+  loadUsers() {
+    this.users = this.usersService.getCreatedUsers();
+    console.log('Users array when page loads: ', this.users);
   }
 
   openAddUserDialog() {
     const dialogRef = this.dialog.open(AdduserComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      // Check if a new user was created
-      if (result) {
-        console.log(result);
-        console.log(this.users);
-      }
+    dialogRef.componentInstance.userCreated.subscribe((newUser: UserEntry) => {
+      this.loadUsers(); 
     });
+
   }
 }

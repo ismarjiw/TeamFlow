@@ -55,27 +55,20 @@ export class AdduserComponent {
     if (this.addUserForm.valid) {
       const formValues = this.addUserForm.value;
   
-      const newUser: UserEntry = { // modify this later, just for testing purposes 
+      const newUser: UserEntry = { 
         name: formValues.firstName,
         email: formValues.email,
-        status: formValues.status,
-        active: formValues.active,
-        admin: formValues.isAdmin
+        status: 'JOINED', // hardedcoded for testing
+        active: 'YES', // hardedcoded for testing
+        admin: formValues.isAdmin ? 'YES' : 'NO'
       };
-  
+
       this.usersService.createUserTest(newUser)
-        .subscribe({
-          next: (user) => {
-            // user added successfully 
-            this.userCreated.emit(user);
-            console.log(user);
-            this.dialog.closeAll();
-          },
-          error: (error) => {
-            // handle error
-            console.log(error);
-          }
-      });
+        .subscribe((user: UserEntry) => {
+          this.userCreated.emit(user);
+          console.log('User created after clicking submit: ', user);
+          this.dialog.closeAll();
+        });
     }
   }
 
