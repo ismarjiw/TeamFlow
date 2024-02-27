@@ -10,17 +10,14 @@ import { TeamsComponent } from './teams/teams.component';
 import { TeamComponent } from './teams/team/team.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogTitle,
-  MatDialogContent,
-  MatDialogModule,
-} from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CreateteamComponent } from './createteam/createteam.component';
+import { UserregistryComponent } from './userregistry/userregistry.component';
+import { MatTableModule } from '@angular/material/table';
+import { AdduserComponent } from './adduser/adduser.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +26,9 @@ import { CreateteamComponent } from './createteam/createteam.component';
     HomeComponent,
     TeamsComponent,
     TeamComponent,
-    CreateteamComponent
+    CreateteamComponent,
+    UserregistryComponent,
+    AdduserComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +40,8 @@ import { CreateteamComponent } from './createteam/createteam.component';
     MatSelectModule,
     MatInputModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
