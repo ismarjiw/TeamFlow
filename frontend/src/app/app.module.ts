@@ -11,6 +11,12 @@ import { AnnouncementsComponent } from './announcements/announcements.component'
 import { NavmenuComponent } from './navmenu/navmenu.component';
 import { NavmenuMobileComponent } from './navmenu-mobile/navmenu-mobile.component';
 import { AnnouncementComponent } from './announcements/announcement/announcement.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,8 @@ import { AnnouncementComponent } from './announcements/announcement/announcement
     AnnouncementsComponent,
     NavmenuComponent,
     NavmenuMobileComponent,
-    AnnouncementComponent, 
+    AnnouncementComponent,
+    CreateAnnouncementComponent, 
   ],
   imports: [
     BrowserModule,
