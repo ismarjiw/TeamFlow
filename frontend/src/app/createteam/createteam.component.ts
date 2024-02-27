@@ -22,7 +22,7 @@ export class CreateteamComponent {
   @Output() teamCreated = new EventEmitter<any>();
   teamForm: FormGroup;
 
-  // Mock member list (replace with actual member data)
+  // Mock member list (replace with actual member data from db)
   members = ['Alice', 'Bob', 'Charlie', 'David', 'Emily'];
 
   constructor(
@@ -36,14 +36,13 @@ export class CreateteamComponent {
     this.teamForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      selectedMembers: [[]] 
+      selectedMembers: [[], Validators.required] 
     });
   }
 
-  // need to figure out why im returning undefined for member names 
-
   onSubmit() {
     if (this.teamForm.valid) {
+      console.log(this.teamForm.value)
       
       const name = this.teamForm.value.name;
       const description = this.teamForm.value.description;
@@ -51,10 +50,8 @@ export class CreateteamComponent {
 
       this.teamsService.createTeam(name, description, selectedMemberNames)
         .subscribe((team: Team) => {
-          // Emit the created team object
           console.log(team);
           this.teamCreated.emit(team);
-          // Close the dialog
           this.dialog.closeAll();
         });
     }

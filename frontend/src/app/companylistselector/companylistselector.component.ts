@@ -32,7 +32,7 @@ export class CompanylistselectorComponent {
 
   onSubmit() {
     if (this.companyForm.valid) {
-      this.companyService.getSelectedCompany(this.selectedCompany)
+      this.companyService.getSelectedCompany(this.companyForm.value.company)
         .subscribe(company => {
           console.log(company);
           this.companySelected.emit(company);

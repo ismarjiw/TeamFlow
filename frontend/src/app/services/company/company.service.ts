@@ -13,8 +13,6 @@ export class CompanyService {
   //   return this.http.get('http://localhost:8080/select-company');
   // }
 
-
-  // fake data + service until can connect to backend \\ 
   private companies = [
     {
       id: 1,
@@ -26,21 +24,18 @@ export class CompanyService {
     }
   ];
 
-  // getSelectedCompany(selectedCompany: string) {
-  //   // Find matching company
-  //   const company = this.companies.find(c => c.name === selectedCompany);
+  getSelectedCompany(selectedCompany: string) {
 
-  //   return of({
-  //     // Return fake data for selected company  
-  //     id: company?.id, 
-  //     name: company?.name  
-  //   });
-  // }
+    // Find matching company
+    const company = this.companies.find(c => c.name === selectedCompany);
 
-  getSelectedCompany(selectedCompany: string): Observable<any> {
-    return of(
-      this.companies.find(c => c.name === selectedCompany)
-    );
+    return of({
+      // Return fake data for selected company  
+      id: company?.id, 
+      name: company?.name  
+    });
+
   }
 
 }
+

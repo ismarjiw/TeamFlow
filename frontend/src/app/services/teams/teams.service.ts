@@ -31,20 +31,18 @@ export class TeamsService {
     return of(this.teams);
   }
 
-  // Method to create a new team
+  // Method to create a new team (with fake data for now)
   createTeam(name: string, description: string, members: string[]): Observable<any> {
     const newTeam = {
       name,
       description,
       members
     };
-
     this.createdTeams.push(newTeam); 
     return of(newTeam); 
   }
 
   // Add methods for future backend interaction:
-
   /*
   getTeamById(teamId: number): Observable<any> {
     return this.http.get<any>(`http://localhost:8080/teams/${teamId}`);
