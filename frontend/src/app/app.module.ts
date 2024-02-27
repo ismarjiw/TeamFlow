@@ -8,13 +8,19 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
+import { NavmenuComponent } from './navmenu/navmenu.component';
+import { NavmenuMobileComponent } from './navmenu-mobile/navmenu-mobile.component';
+import { AnnouncementComponent } from './announcements/announcement/announcement.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ProjectsComponent,
-    AnnouncementsComponent, 
+    AnnouncementsComponent,
+    NavmenuComponent,
+    NavmenuMobileComponent,
+    AnnouncementComponent, 
   ],
   imports: [
     BrowserModule,
