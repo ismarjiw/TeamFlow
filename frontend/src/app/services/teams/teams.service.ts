@@ -18,18 +18,7 @@ export class TeamsService {
   //   return this.http.get<any>('http://localhost:8080/teams'); // Example backend URL
   // }
 
-  // Fake data for teams until connected to backend
-  private teams = [
-    { name: 'Marketing', totalProjects: 5, members: ['Alice', 'Bob', 'Charlie'] },
-    { name: 'Engineering', totalProjects: 8, members: ['David', 'Emily', 'Frank'] },
-    { name: 'Sales', totalProjects: 4, members: ['Grace', 'Harry', 'Isabella'] }
-  ];
-
   private createdTeams: Team[] = [];
-
-  getAllTeams(): Observable<any> {
-    return of(this.teams);
-  }
 
   // Method to create a new team (with fake data for now)
   createTeam(name: string, description: string, members: string[]): Observable<any> {

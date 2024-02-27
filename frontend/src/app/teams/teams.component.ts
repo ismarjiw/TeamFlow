@@ -12,7 +12,7 @@ export class TeamsComponent {
 
   constructor(
     private teamsService: TeamsService, // later for when grabbing team data from backend 
-    public dialog: MatDialog
+    public dialog: MatDialog,
     ) {}
 
   // Placeholder teams data
@@ -45,17 +45,9 @@ export class TeamsComponent {
     dialogRef.afterClosed().subscribe(result => {
       // Check if a new team was created
       if (result) {
-        console.log(result)
-        // Add the new team to the teams array 
-        this.onTeamCreated(result);
-        console.log(this.teams);
+        console.log(result);
       }
     });
-  }
-
-  onTeamCreated(newTeam: any) {
-    // Add the new team to the teams array
-    this.teams.push(newTeam);
   }
 
 }

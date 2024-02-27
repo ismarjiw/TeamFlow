@@ -42,7 +42,6 @@ export class CreateteamComponent {
 
   onSubmit() {
     if (this.teamForm.valid) {
-      console.log(this.teamForm.value)
       
       const name = this.teamForm.value.name;
       const description = this.teamForm.value.description;
