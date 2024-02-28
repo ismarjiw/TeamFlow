@@ -27,8 +27,12 @@ export class UserregistryComponent {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const companyId = params['id']; // Assuming route parameter is named 'id'
+      const companyId = params['companyId']; 
       this.usersService.setCompanyId(companyId);
+    });
+
+    this.users$.subscribe(users => {
+      console.log(users); 
     });
   }
 

@@ -14,12 +14,14 @@
     <table mat-table [dataSource]="users" class="user-table">
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+            <td mat-cell *matCellDef="let user"> 
+              {{user.profile.firstName}} {{user.profile.lastName}} 
+            </td>
           </ng-container>
         
           <ng-container matColumnDef="email">
             <th mat-header-cell *matHeaderCellDef> Email </th>
-            <td mat-cell *matCellDef="let user"> {{user.email}} </td>
+            <td mat-cell *matCellDef="let user"> {{user.profile.email}} </td>
           </ng-container>
         
           <ng-container matColumnDef="active">

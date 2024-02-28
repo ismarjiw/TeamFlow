@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, map, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, switchMap, tap } from 'rxjs';
 import { Employee } from '../company/company.service';
 
 @Injectable({
@@ -8,20 +8,19 @@ import { Employee } from '../company/company.service';
 })
 export class UsersService {
 
-  private usersUrl = 'http://localhost:8080/company{id}/users';
-  private deleteUserUrl = 'http://localhost:8080/company{id}/user/{id}';
+  private usersUrl = 'http://localhost:8080/company/{id}/users';
+  private deleteUserUrl = 'http://localhost:8080/company/{id}/user/{id}';
 
   constructor(private http: HttpClient) { } 
 
   private companyIdSubject = new BehaviorSubject<number | null>(null);
 
   users$ = this.companyIdSubject.pipe(
+    tap(companyId => console.log('Company ID:', companyId)),
     switchMap(companyId => {
       if (companyId !== null) {
         const url = this.usersUrl.replace('{id}', companyId.toString());
-        return this.http.get<any[]>(url).pipe( 
-          map(users => users.filter(user => user.companies.some((company: { id: number; }) => company.id === companyId)))
-        );
+        return this.http.get<any[]>(url)
       } else {
         // If companyId is null, return an empty array
         return [];

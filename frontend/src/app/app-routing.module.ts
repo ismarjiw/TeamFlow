@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: "company/:cid/teams/:tid/projects", component: ProjectsComponent},  
   {path: "companies", component: CompanylistselectorComponent},
   { path: "company/:companyId/teams", component: TeamsComponent }, // Dynamic route for teams of a specific company
-  {path: "users", component: UserregistryComponent}
+  {path: "company/:companyId/users", component: UserregistryComponent}
 ];
 
 @NgModule({
