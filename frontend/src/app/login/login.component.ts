@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   email = this.loginForm.controls['email']
   password = this.loginForm.controls['password']
+  admin: boolean = false
 
   ngOnInit(): void {
     // FOR TESTING, REMOVE ONCE AUTHENTICATION WORKS
@@ -43,6 +44,12 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('authenticated', 'true')
     })
     .then(() => {
+      // Waiting to implement this. Should they go to select company no matter what?
+      // if (this.admin) {
+      //   this.router.navigateByUrl('/company')
+      // } else {
+      //   this.router.navigateByUrl('/company/6/teams/11/projects')
+      // }
       this.router.navigateByUrl('/company/6/teams/11/projects')
     })
     .catch((err) => console.log(err))

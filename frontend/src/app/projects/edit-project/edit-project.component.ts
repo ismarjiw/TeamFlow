@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog'
+import { Component, EventEmitter, Output } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog'
 import { Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -13,6 +13,7 @@ import { ProjectService, Project } from 'src/app/services/project.service';
 export class EditProjectComponent {
   projectForm: FormGroup;
   project: any
+  @Output() editedProject = new EventEmitter<Project>()
 
   constructor(
     private projectService: ProjectService,
@@ -28,21 +29,22 @@ export class EditProjectComponent {
     // Create form
     this.projectForm = this.fb.group({
       name: [this.project.name, Validators.required],
-      description: [this.project.description, Validators.required], 
-      active: [this.project.active]
+      description: [this.project.description, Validators.required],
+      active: []
     });
   }
 
 
   onSubmit() {
     // Create a new Project object
-    const project: Project = this.project
-    project.name = this.projectForm.controls['name'].value
-    project.description = this.projectForm.controls['description'].value
-    project.active = this.projectForm.controls['active'].value
-
+    const name = this.projectForm.controls['name'].value
+    const description = this.projectForm.controls['description'].value
+    const active = this.projectForm.controls['active'].value
     // Pass obj to POST method and close modal
-    this.projectService.editProject(this.data.companyId, this.data.teamId, project.id, project)
-    .then(() => this.dialog.closeAll())
+    this.projectService.editProject(this.data.companyId, this.data.teamId, this.project.id, { name: name, description: description, active: active })
+      .then((project) => {
+        this.editedProject.emit(project);
+        this.dialog.closeAll()
+      })
   }
 }

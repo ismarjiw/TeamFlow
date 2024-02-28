@@ -15,6 +15,7 @@ export class CreateAnnouncementComponent {
   announcementForm: FormGroup;
   user: any
   companyId: number = -1;
+  @Output() createdAnnoucement = new EventEmitter<Announcement>();
 
   constructor(
     private announceService: AnnouncementService,
@@ -33,7 +34,7 @@ export class CreateAnnouncementComponent {
 
     // Grab companyId from URL
     this.route.params.subscribe(params => {
-      this.companyId = params['companyId']
+      this.companyId = 6
     });
 
     // Get user from local storage for making announcements
@@ -56,7 +57,7 @@ export class CreateAnnouncementComponent {
 
     // Pass obj to POST method and close modal
     this.announceService.createAnnouncement(this.companyId, announcement)
-    .then(() => this.dialog.closeAll())
+    .then((announcement) => {this.createdAnnoucement.emit(announcement) ; this.dialog.closeAll()})
   }
 
 }
