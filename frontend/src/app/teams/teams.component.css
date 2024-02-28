@@ -1,0 +1,32 @@
+.teams-container {
+    color: var(--text-color);
+    font-family: var(--main-font-family);
+    margin: auto;
+    width: fit-content;
+}
+
+.all-teams {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5rem;
+}
+
+.teams-title {
+    text-align: center;
+    color: var(--header-color);
+}
+
+.add-team {
+    border: solid;
+    border-color: var(--outline-color);
+    border-radius: 1rem;
+    background-color: var(--bg-color);
+    color: var(--outline-color);
+    font-size: 2rem;
+}
+
+.icon-display {
+    transform: scale(2);
+    margin-right: 0.5rem;
+}
+

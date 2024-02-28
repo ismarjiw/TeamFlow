@@ -5,6 +5,21 @@ import { RouterModule, Routes } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CompanylistselectorComponent } from './companylistselector/companylistselector.component';
+import { HomeComponent } from './home/home.component';
+import { TeamsComponent } from './teams/teams.component';
+import { TeamComponent } from './teams/team/team.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CreateteamComponent } from './createteam/createteam.component';
+import { UserregistryComponent } from './userregistry/userregistry.component';
+import { MatTableModule } from '@angular/material/table';
+import { AdduserComponent } from './adduser/adduser.component';
 import { LoginComponent } from './login/login.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
@@ -26,6 +41,14 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog'
 @NgModule({
   declarations: [
     AppComponent,
+    CompanylistselectorComponent,
+    HomeComponent,
+    TeamsComponent,
+    TeamComponent,
+    CreateteamComponent,
+    UserregistryComponent,
+    AdduserComponent
+    AppComponent,
     LoginComponent,
     ProjectsComponent,
     AnnouncementsComponent,
@@ -39,6 +62,16 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog'
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatSelectModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatTableModule
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
