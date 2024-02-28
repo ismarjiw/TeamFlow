@@ -24,11 +24,14 @@ export type Project =
 })
 
 export class ProjectService {
-	apiUrl: string = "http://localhost:4200/"
+	apiUrl: string = "http://localhost:8080/"
 
 	getProjects(companyId: number, teamId: number): Promise<Project[]> {
-		return fetch(this.apiUrl + `/company/${companyId}/teams/${teamId}/projects`)
-			.then((response) => response.json())
+		return fetch(`url/company/${companyId}/teams/${teamId}/projects`,
+			{
+				method: "GET"
+			})
+			.then((response) => {return response.json()})
 			.catch(err => console.log(err))
 	}
 
@@ -40,6 +43,7 @@ export class ProjectService {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(project)
 			})
+			.then((response) => response.json())
 			.catch((err) => console.log(err))
 	}
 

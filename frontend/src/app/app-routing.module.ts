@@ -11,7 +11,7 @@ import { ProjectsComponent } from './projects/projects.component';
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "announcements", component: AnnouncementsComponent },
-  { path: "projects", component: ProjectsComponent},  
+  { path: "company/:cid/teams/:tid/projects", component: ProjectsComponent},  
   {path: "companies", component: CompanylistselectorComponent},
   {path: "teams", component: TeamsComponent},
   {path: "users", component: UserregistryComponent}

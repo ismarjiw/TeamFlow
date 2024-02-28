@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       // localStorage.setItem('user', JSON.stringify(user))
     })
     .then(() => {
-      this.router.navigateByUrl('/announcements')
+      this.router.navigateByUrl('/company/6/teams/11/projects')
     })
     .catch((err) => console.log(err))
   }
