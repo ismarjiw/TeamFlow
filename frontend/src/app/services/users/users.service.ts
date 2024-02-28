@@ -1,78 +1,79 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { AddUserEntry } from 'src/app/modals/adduser/adduser.component';
-import { UserEntry } from 'src/app/components/userregistry/userregistry.component';
+import { BehaviorSubject, Observable, catchError, map, switchMap } from 'rxjs';
+import { Employee } from '../company/company.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  private apiUrl = 'http://localhost:8080/users';
+  private usersUrl = 'http://localhost:8080/company{id}/users';
+  private deleteUserUrl = 'http://localhost:8080/company{id}/user/{id}';
 
-  private createdUsers: UserEntry[] = [];
+  constructor(private http: HttpClient) { } 
 
-  // constructor(private http: HttpClient) { } 
+  private companyIdSubject = new BehaviorSubject<number | null>(null);
 
-  createUserTest(user: UserEntry): Observable<any> {
-    const newUser = {
-      name: user.name,
-      email: user.email,
-      active: user.active,
-      admin: user.admin,
-      status: user.status,
-    };
-    this.createdUsers.push(newUser); 
-    return of(newUser); 
+  users$ = this.companyIdSubject.pipe(
+    switchMap(companyId => {
+      if (companyId !== null) {
+        const url = this.usersUrl.replace('{id}', companyId.toString());
+        return this.http.get<any[]>(url).pipe( 
+          map(users => users.filter(user => user.companies.some((company: { id: number; }) => company.id === companyId)))
+        );
+      } else {
+        // If companyId is null, return an empty array
+        return [];
+      }
+    }),
+    catchError(error => {
+      // Handle error
+      console.error('Error fetching users:', error);
+      throw error;
+    })
+  );
+
+  setCompanyId(companyId: number): void {
+    this.companyIdSubject.next(companyId);
   }
 
-  getCreatedUsers(): any[] {
-    const usersCopy = this.createdUsers.map(user => ({
-      name: user.name,
-      email: user.email,
-      active: user.active,
-      admin: user.admin,
-      status: user.status,
-    }));
-    
-    return [...usersCopy];
-  }
-
-  // getAllUsers(): Observable<UserEntry[]> {
-  //   return this.http.get<UserEntry[]>(this.apiUrl);
-  // }
-
-  // getUserById(id: number): Observable<UserEntry> {
-  //   const url = `${this.apiUrl}/${id}`;
-  //   return this.http.get<UserEntry>(url);
-  // }
-
-  // createUser(user: UserEntry): Observable<UserEntry> {
-  //   return this.http.post<UserEntry>(this.apiUrl, user);
-  // }
-
-  // createUserFromModal(user: AddUserEntry): Observable<AddUserEntry> {
-  //   // Map to AddUserEntry type for backend
-  //   const newUser: AddUserEntry = {
-  //     firstName: user.firstName,
-  //     lastName: user.lastName,
-  //     email: user.email,
-  //     password: user.password,
-  //     phone: user.phone,      
-  //     isAdmin: user.isAdmin
-  //   };
-  //   return this.http.post<AddUserEntry>(this.apiUrl, newUser);
-  // }
-
-  // updateUser(id: number, user: UserEntry): Observable<any> {
-  //   const url = `${this.apiUrl}/${id}`;
-  //   return this.http.put(url, user);
-  // }
-
-  // deleteUser(id: number): Observable<any> {
-  //   const url = `${this.apiUrl}/${id}`;
-  //   return this.http.delete(url);
-  // }
+  createUser$ = (user: Employee): Observable<any> => {
+    return this.companyIdSubject.pipe(
+      switchMap(companyId => {
+        if (companyId !== null) {
+          const url = this.usersUrl.replace('{id}', companyId.toString());
+          return this.http.post<any>(url, user);
+        } else {
+          throw new Error('Company ID is not set.');
+        }
+      }),
+      catchError(error => {
+        // Handle error
+        console.error('Error creating user:', error);
+        throw error;
+      })
+    );
+  };
+  
+  deleteUser$: (userId: number) => Observable<any> = (userId: number) => {
+    return this.companyIdSubject.pipe(
+      switchMap(companyId => {
+        if (companyId !== null) {
+          const url = this.deleteUserUrl
+            .replace('{id}', companyId.toString())
+            .replace('{id}', userId.toString());
+          return this.http.delete<any>(url);
+        } else {
+          throw new Error('Company ID is not set.');
+        }
+      }),
+      catchError(error => {
+        // Handle error
+        console.error('Error deleting user:', error);
+        throw error;
+      })
+    );
+  };
 
 }

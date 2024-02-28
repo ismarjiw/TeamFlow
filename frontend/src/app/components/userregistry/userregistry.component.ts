@@ -1,24 +1,10 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { UsersService } from '../../services/users/users.service';
 import { MatDialog } from '@angular/material/dialog';
-import { AddUserEntry, AdduserComponent } from '../../modals/adduser/adduser.component';
-import { take } from 'rxjs';
-
-export interface UserEntry {
-  name: string;
-  email: string;
-  active: string;
-  admin: string;
-  status: string;
-}
-// change interface to include user id later from backend -> modify as needed in UsersService -> this was just for test purposes 
-
-const USER_DATA: UserEntry[] = [
-  {name: 'ismarji', email: 'me@gmail.com', active: 'YES', admin: 'YES', status: 'JOINED'},
-  {name: 'sherry', email: 'sherry@gmail.com', active: 'YES', admin: 'YES', status: 'JOINED'},
-  {name: 'wolfy', email: 'wolfy@gmail.com', active: 'YES', admin: 'YES', status: 'JOINED'},
-  {name: 'matthew', email: 'matthew@gmail.com', active: 'YES', admin: 'YES', status: 'JOINED'},
-];
+import { AdduserComponent } from '../../modals/adduser/adduser.component';
+import { Observable } from 'rxjs';
+import { Employee } from 'src/app/services/company/company.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-userregistry',
@@ -28,22 +14,22 @@ const USER_DATA: UserEntry[] = [
 export class UserregistryComponent {
 
   displayedColumns: string[] = ['name', 'email', 'active', 'admin', 'status'];
-  dataSource = USER_DATA; // initial test data -> replace [dataSource] with "dataSource" in table to see
 
-  users: any[] = []; 
   isLoading = false;
+  users$: Observable<any[]>
 
   constructor(private usersService: UsersService,
     public dialog: MatDialog,
-    ) {}
+    private route: ActivatedRoute
+    ) {
+      this.users$ = this.usersService.users$;
+    }
 
   ngOnInit() {
-    this.loadUsers();
-  }
-
-  loadUsers() {
-    this.users = this.usersService.getCreatedUsers();
-    console.log('Users array when page loads: ', this.users);
+    this.route.params.subscribe(params => {
+      const companyId = params['id']; // Assuming route parameter is named 'id'
+      this.usersService.setCompanyId(companyId);
+    });
   }
 
   openAddUserDialog() {
@@ -52,8 +38,14 @@ export class UserregistryComponent {
       panelClass:"custom",
     });
 
-    dialogRef.componentInstance.userCreated.subscribe((newUser: UserEntry) => {
-      this.loadUsers(); 
+    dialogRef.componentInstance.userCreated.subscribe((newUser: Employee) => {
+      // Optional: Display a confirmation message
+      console.log('New user added:', newUser);
+
+      // Optional: Perform additional logic
+
+      // If you need to trigger any action after adding a new user,
+      // you can do it here without explicitly fetching users again.
     });
 
   }

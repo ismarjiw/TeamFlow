@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { Company, CompanyService } from '../../services/company/company.service';
+import { CompanyService } from '../../services/company/company.service';
 import { Observable, map } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,12 +11,10 @@ import { Router } from '@angular/router';
 })
 export class CompanylistselectorComponent {
 
-    // companies: string[] = ['Company A', 'Company B'];
     selectedCompany: string = ''; 
-
     companies$: Observable<any[]>
-
     companyForm: FormGroup;
+
     @Output() companySelected = new EventEmitter<any>();
 
     constructor(
@@ -38,13 +36,11 @@ export class CompanylistselectorComponent {
       this.companyService.companies$.pipe(
         map(companies => companies.find(company => company.name === this.companyForm.value.company))
       ).subscribe(selectedCompany => {
-        console.log(selectedCompany); // id and name of company 
+        console.log(selectedCompany); 
         this.companySelected.emit(selectedCompany);
         // Navigate to the route for the selected company's teams
         this.router.navigate(['/company', selectedCompany?.id, 'teams']);
-        // this.router.navigateByUrl('/teams');
       });
     }
   }
-
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map, of } from 'rxjs';
+import { map } from 'rxjs';
 
 export interface Company {
   id: number;
@@ -46,31 +46,8 @@ export interface UserProfile {
 export class CompanyService {
 
   companiesUrl: string = 'http://localhost:8080/company'
+
   constructor(private http: HttpClient) { }
-
-  // private companies = [
-  //   {
-  //     id: 1,
-  //     name: 'Company A'
-  //   },
-  //   {
-  //     id: 2, 
-  //     name: 'Company B'
-  //   }
-  // ];
-
-  // getSelectedCompany(selectedCompany: string) {
-
-  //   // Find matching company
-  //   const company = this.companies.find(c => c.name === selectedCompany);
-
-  //   return of({
-  //     // Return fake data for selected company  
-  //     id: company?.id, 
-  //     name: company?.name  
-  //   });
-
-  // }
 
   companies$ = this.http.get<Company[]>(this.companiesUrl)
   .pipe(
@@ -98,8 +75,5 @@ export class CompanyService {
       }))  
     })))
   );
-
-
-
 }
 
