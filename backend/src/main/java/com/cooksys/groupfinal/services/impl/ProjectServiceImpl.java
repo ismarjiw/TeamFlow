@@ -4,15 +4,20 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.cooksys.groupfinal.entities.Credentials;
 import com.cooksys.groupfinal.entities.Project;
 import com.cooksys.groupfinal.entities.Team;
+import com.cooksys.groupfinal.entities.User;
 import com.cooksys.groupfinal.exceptions.BadRequestException;
 import com.cooksys.groupfinal.exceptions.NotFoundException;
+import com.cooksys.groupfinal.dtos.CredentialsDto;
 import com.cooksys.groupfinal.dtos.ProjectDto;
+import com.cooksys.groupfinal.mappers.CredentialsMapper;
 import com.cooksys.groupfinal.mappers.ProjectMapper;
 import com.cooksys.groupfinal.mappers.TeamMapper;
 import com.cooksys.groupfinal.repositories.ProjectRepository;
 import com.cooksys.groupfinal.repositories.TeamRepository;
+import com.cooksys.groupfinal.repositories.UserRepository;
 import com.cooksys.groupfinal.services.ProjectService;
 
 import lombok.RequiredArgsConstructor;
@@ -22,6 +27,8 @@ import lombok.RequiredArgsConstructor;
 public class ProjectServiceImpl implements ProjectService {
 	
 	private final ProjectRepository projectRepository;
+	private final UserRepository userRepository;
+	private final CredentialsMapper credentialsMapper;
 	private final ProjectMapper projectMapper;
 	private final TeamRepository teamRepository;
 	private final TeamMapper teamMapper;
@@ -73,5 +80,44 @@ public class ProjectServiceImpl implements ProjectService {
 		
 		return projectMapper.entityToDto(projectRepository.saveAndFlush(p));
 	}
+	
+	public ProjectDto deleteProject(CredentialsDto cred, Long id) {
+		User user = proveCredentials(cred);
+		
+		if(!user.isAdmin()) {
+			throw new BadRequestException("You are not an authorized user.");
+		}
+		
+		Optional<Project> project = projectRepository.findById(id);
+		
+		if(project.isEmpty()) {
+			throw new NotFoundException("A project with id " + id + "was not found.");
+		}
+		Project projecter = project.get(); 
+		projecter.setActive(false);
+		
+		return projectMapper.entityToDto(projectRepository.saveAndFlush(projecter));
+	}
+	
+	private User proveCredentials(CredentialsDto cred) {
+		Credentials credent = credentialsMapper.dtoToEntity(cred);
+		
+		Optional<User> credOP = userRepository.findByCredentialsUsernameAndActiveTrue(credent.getUsername());
+		
+		if(credOP.isEmpty()) {
+			throw new BadRequestException("Username doe not match a known user.");
+		}
+		
+		User user = credOP.get();
+		
+		if(!user.getCredentials().equals(credent)) {
+			throw new BadRequestException("credentials do not match.");
+		}
+		
+		return user;
+		
+	}
 
 }
+
+
