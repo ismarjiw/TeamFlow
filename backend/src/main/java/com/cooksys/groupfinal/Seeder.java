@@ -57,7 +57,7 @@ public class Seeder implements CommandLineRunner {
 	  
 	  User user1 = new User();
 	  Credentials creds1 = new Credentials();
-	  creds1.setUsername("cousingreg");
+	  creds1.setUsername("ghirsch@email.com");
 	  creds1.setPassword("mosteligiblebachelor");
 	  user1.setCredentials(creds1);
 	  Profile profile1 = new Profile();
@@ -70,7 +70,7 @@ public class Seeder implements CommandLineRunner {
 	  
 	  User user2 = new User();
 	  Credentials creds2 = new Credentials();
-	  creds2.setUsername("mrsiobhanroy");
+	  creds2.setUsername("twambsgans@email.com");
 	  creds2.setPassword("idontwanttogotojail");
 	  user2.setCredentials(creds2);
 	  Profile profile2 = new Profile();
@@ -83,7 +83,7 @@ public class Seeder implements CommandLineRunner {
 	  
 	  User user3 = new User();
 	  Credentials creds3 = new Credentials();
-	  creds3.setUsername("homeboykroy");
+	  creds3.setUsername("kroy@email.com");
 	  creds3.setPassword("ltotheog");
 	  user3.setCredentials(creds3);
 	  Profile profile3 = new Profile();
@@ -95,7 +95,7 @@ public class Seeder implements CommandLineRunner {
 	  
 	  User user4 = new User();
 	  Credentials creds4 = new Credentials();
-	  creds4.setUsername("romulusroy");
+	  creds4.setUsername("rroy@email.com");
 	  creds4.setPassword("iknownothingaboutsoccer");
 	  user4.setCredentials(creds4);
 	  Profile profile4 = new Profile();
@@ -108,7 +108,7 @@ public class Seeder implements CommandLineRunner {
 	  
 	  User user5 = new User();
 	  Credentials creds5 = new Credentials();
-	  creds5.setUsername("pinky");
+	  creds5.setUsername("sroy@email.com");
 	  creds5.setPassword("futureceoofwaystar");
 	  user5.setCredentials(creds5);
 	  Profile profile5 = new Profile();
@@ -121,7 +121,7 @@ public class Seeder implements CommandLineRunner {
 	  
 	  User user6 = new User();
 	  Credentials creds6 = new Credentials();
-	  creds6.setUsername("thisismycompany");
+	  creds6.setUsername("lroy@email.com");
 	  creds6.setPassword("getyourowncompany");
 	  user6.setCredentials(creds6);
 	  Profile profile6 = new Profile();
@@ -135,7 +135,7 @@ public class Seeder implements CommandLineRunner {
 	  
 	  User user7 = new User();
 	  Credentials creds7 = new Credentials();
-	  creds7.setUsername("iamtheeldestson");
+	  creds7.setUsername("croy@email.com");
 	  creds7.setPassword("interestedinpoliticsataveryyoungage");
 	  user7.setCredentials(creds7);
 	  Profile profile7 = new Profile();
@@ -147,7 +147,7 @@ public class Seeder implements CommandLineRunner {
 	  
 	  User user8 = new User();
 	  Credentials creds8 = new Credentials();
-	  creds8.setUsername("marciaroy");
+	  creds8.setUsername("mroy@email.com");
 	  creds8.setPassword("amir");
 	  user8.setCredentials(creds8);
 	  Profile profile8 = new Profile();
@@ -159,7 +159,7 @@ public class Seeder implements CommandLineRunner {
 	  
 	  User user9 = new User();
 	  Credentials creds9 = new Credentials();
-	  creds9.setUsername("temporaryceoofwaystar");
+	  creds9.setUsername("gkellman@email.com");
 	  creds9.setPassword("idontgetpaidenoughforthis");
 	  user9.setCredentials(creds9);
 	  Profile profile9 = new Profile();
@@ -173,7 +173,7 @@ public class Seeder implements CommandLineRunner {
 	  
 	  User user10 = new User();
 	  Credentials creds10 = new Credentials();
-	  creds10.setUsername("helenaspassword");
+	  creds10.setUsername("helena@email.com");
 	  creds10.setPassword("helenasusername");
 	  user10.setCredentials(creds10);
 	  Profile profile10 = new Profile();
@@ -186,7 +186,7 @@ public class Seeder implements CommandLineRunner {
 	  
 	  User user11 = new User();
 	  Credentials creds11 = new Credentials();
-	  creds11.setUsername("kennysusername");
+	  creds11.setUsername("kenny@email.com");
 	  creds11.setPassword("kennyspassword");
 	  user11.setCredentials(creds11);
 	  Profile profile11 = new Profile();
@@ -199,7 +199,7 @@ public class Seeder implements CommandLineRunner {
 	  
 	  User user12 = new User();
 	  Credentials creds12 = new Credentials();
-	  creds12.setUsername("willsusername");
+	  creds12.setUsername("will@email.com");
 	  creds12.setPassword("willspassword");
 	  user12.setCredentials(creds12);
 	  Profile profile12 = new Profile();

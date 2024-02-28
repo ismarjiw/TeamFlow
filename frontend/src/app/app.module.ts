@@ -29,7 +29,7 @@ import { ProjectComponent } from './projects/project/project.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
 import { EditProjectComponent } from './projects/edit-project/edit-project.component';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog'
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -51,7 +51,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog'
     CreateAnnouncementComponent,
     ProjectComponent,
     CreateProjectComponent,
-    EditProjectComponent, 
+    EditProjectComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +72,8 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog'
     MatInputModule,
     MatFormFieldModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

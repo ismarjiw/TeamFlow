@@ -11,8 +11,7 @@ export class LoginService {
 		return fetch(this.apiUrl + "users/login",
 			{
 				method: "POST",
-				headers: { "Content-Type": "application/json",
-			},
+				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ username: email, password: password })
 			})
 			.then((response) => response.json())

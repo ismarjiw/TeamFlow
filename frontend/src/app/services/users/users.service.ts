@@ -9,7 +9,7 @@ import { UserEntry } from 'src/app/components/userregistry/userregistry.componen
 })
 export class UsersService {
 
-  private apiUrl = 'http://localhost:3000/users';
+  private apiUrl = 'http://localhost:8080/users';
 
   private createdUsers: UserEntry[] = [];
 

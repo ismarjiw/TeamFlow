@@ -23,6 +23,9 @@ export class LoginComponent implements OnInit {
   admin: boolean = false
 
   ngOnInit(): void {
+    // FOR TESTING, REMOVE ONCE AUTHENTICATION WORKS
+    localStorage.setItem('admin', 'true')
+
     // Logout user when routing to login page
     localStorage.clear()
   }
@@ -34,11 +37,11 @@ export class LoginComponent implements OnInit {
     }
     this.loginService.authenticate(this.email.value, this.password.value)
     .then((user: any) => {
+      console.log(user);
       // Store user data and whether admin privileges are active in localstorage
-      this.admin = user.isAdmin
-      console.log(user)
-      localStorage.setItem('admin', JSON.stringify(user.isAdmin))
+      localStorage.setItem('admin', user.admin.toString())
       localStorage.setItem('user', JSON.stringify(user))
+      localStorage.setItem('authenticated', 'true')
     })
     .then(() => {
       // Waiting to implement this. Should they go to select company no matter what?

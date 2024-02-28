@@ -3,11 +3,12 @@
 <div class="teams-container">
     <h1 class="teams-title">Teams</h1>
     <div class="all-teams">
+      <div *ngFor="let team of teams">
         <app-team
-        *ngFor="let team of teams"
+
         [name]="team.name"
         [totalProjects]="team.totalProjects"
-        [members]="team.members"
+        [members]="team.teammates"
     ></app-team>
     <button class="add-team" (click)="openCreateTeamDialog()">
         <mat-icon class="icon-display" fontIcon="add"></mat-icon>
