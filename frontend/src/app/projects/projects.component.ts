@@ -30,12 +30,13 @@ export class ProjectsComponent {
     // }
 
     // Grab company and team id from URL, then get projects
-    // this.route.params.subscribe(params => {
-    //   this.companyId = params['companyId']
-    //   this.teamId = params['teamId']
-    //   this.projectService.getProjects(this.companyId, this.teamId)
-    //   .then((projects) => this.projects = projects)
-    // });
+    this.route.params.subscribe(params => {
+      console.log(params)
+      this.companyId = params['cid']
+      this.teamId = params['tid']
+      this.projectService.getProjects(this.companyId, this.teamId)
+      .then((projects) => this.projects = projects)
+    });
 
     // this.admin = Boolean(localStorage.getItem('admin'))
   }

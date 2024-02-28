@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('authenticated', 'true')
     })
     .then(() => {
-      this.router.navigateByUrl('/announcements')
+      this.router.navigateByUrl('/company/6/teams/11/projects')
     })
     .catch((err) => console.log(err))
   }
