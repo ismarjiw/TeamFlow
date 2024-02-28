@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { AddUserEntry } from 'src/app/adduser/adduser.component';
-import { UserEntry } from 'src/app/userregistry/userregistry.component';
+import { AddUserEntry } from 'src/app/modals/adduser/adduser.component';
+import { UserEntry } from 'src/app/components/userregistry/userregistry.component';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class UsersService {
 
   private createdUsers: UserEntry[] = [];
 
-  // constructor(private http: HttpClient) { } // uncomment when connected to backend
+  // constructor(private http: HttpClient) { } 
 
   createUserTest(user: UserEntry): Observable<any> {
     const newUser = {
@@ -27,8 +27,16 @@ export class UsersService {
     return of(newUser); 
   }
 
-  getCreatedUsers(): Observable<UserEntry[]> {
-    return of(this.createdUsers); 
+  getCreatedUsers(): any[] {
+    const usersCopy = this.createdUsers.map(user => ({
+      name: user.name,
+      email: user.email,
+      active: user.active,
+      admin: user.admin,
+      status: user.status,
+    }));
+    
+    return [...usersCopy];
   }
 
   // getAllUsers(): Observable<UserEntry[]> {

@@ -4,8 +4,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TeamsService } from '../services/teams/teams.service';
-import { Team } from '../services/teams/teams.service'
+import { TeamsService } from '../../services/teams/teams.service';
+import { Team } from '../../services/teams/teams.service'
 
 @Component({
   selector: 'app-createteam',

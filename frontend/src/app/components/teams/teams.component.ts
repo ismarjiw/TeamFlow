@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { TeamsService } from '../services/teams/teams.service';
+import { TeamsService } from '../../services/teams/teams.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateteamComponent } from '../createteam/createteam.component';
+import { CreateteamComponent } from '../../modals/createteam/createteam.component';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -56,14 +56,12 @@ export class TeamsComponent {
   // ]
 
   openCreateTeamDialog() {
-    const dialogRef = this.dialog.open(CreateteamComponent);
+    const dialogRef = this.dialog.open(CreateteamComponent, {
+      width: '400px',
+      panelClass:"custom",
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   // Check if a new team was created
-    //   if (result) {
-    //     console.log(result);
-    //   }
-    // });
+    
   }
 
 }
