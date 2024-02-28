@@ -1,4 +1,6 @@
-<h2 mat-dialog-title>Create Team</h2>
+<div class="modal-container">
+
+<h2 class="header" mat-dialog-title>Create Team</h2>
 <form [formGroup]="teamForm">
   <mat-form-field appearance="fill">
   <mat-label>Team Name</mat-label>
@@ -15,7 +17,10 @@
   </mat-select>
 </mat-form-field>
 <div mat-dialog-actions>
-  <button mat-button (click)="onSubmit()" type="submit">Create Team</button>
+  <button class="add-team-btn" mat-button (click)="onSubmit()" type="submit">Create Team</button>
 </div>
-</form>
+</form>  
+</div>
+
+
 

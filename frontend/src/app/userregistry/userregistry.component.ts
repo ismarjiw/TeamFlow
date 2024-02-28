@@ -47,7 +47,10 @@ export class UserregistryComponent {
   }
 
   openAddUserDialog() {
-    const dialogRef = this.dialog.open(AdduserComponent);
+    const dialogRef = this.dialog.open(AdduserComponent, {
+      width: '600px',
+      panelClass:"custom",
+    });
 
     dialogRef.componentInstance.userCreated.subscribe((newUser: UserEntry) => {
       this.loadUsers(); 

@@ -56,14 +56,12 @@ export class TeamsComponent {
   // ]
 
   openCreateTeamDialog() {
-    const dialogRef = this.dialog.open(CreateteamComponent);
+    const dialogRef = this.dialog.open(CreateteamComponent, {
+      width: '400px',
+      panelClass:"custom",
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   // Check if a new team was created
-    //   if (result) {
-    //     console.log(result);
-    //   }
-    // });
+    
   }
 
 }

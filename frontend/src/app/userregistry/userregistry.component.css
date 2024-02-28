@@ -3,6 +3,21 @@
     text-align: center;
 }
 
+.add-user-btn {
+    width: 8rem;
+    padding: 1rem;
+    background-color: var(--header-color);
+    border: none;
+    color: var(--text-color);
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.user-container {
+    margin: 0 auto; /* Center the container horizontally */
+    width: 80%;
+}
+
 table {
     border-collapse: separate;
     border-radius: 10px;
