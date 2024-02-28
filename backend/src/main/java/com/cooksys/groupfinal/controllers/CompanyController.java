@@ -31,6 +31,9 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/company")
 @RequiredArgsConstructor
+
+@CrossOrigin(origins = {"http://localhost:4200"},
+		methods={RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH, RequestMethod.DELETE})
 public class CompanyController {
 	
 	private final CompanyService companyService;
@@ -38,6 +41,7 @@ public class CompanyController {
 	private final UserService userService;
 	private final ProjectService projectService;
 	
+
 	@GetMapping("")
 	public Set<CompanyDto> getAllCompanies(){
 		return companyService.getAllCompanies();
