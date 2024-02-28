@@ -6,13 +6,14 @@ import { BehaviorSubject } from "rxjs";
 })
 
 export class LoginService {
-	apiUrl: string = "http://localhost:4200/"
+	apiUrl: string = "http://localhost:8080/"
 	authenticate(email: string, password: string) {
-		return fetch(this.apiUrl + "/login",
+		return fetch(this.apiUrl + "users/login",
 			{
 				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ email: email, password: password })
+				headers: { "Content-Type": "application/json",
+			},
+				body: JSON.stringify({ username: email, password: password })
 			})
 			.then((response) => response.json())
 			.catch((err) => console.log(err))
