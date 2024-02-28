@@ -41,12 +41,12 @@ export class ProjectsComponent {
   }
 
   openCreateDialog() {
-    const dialogRef = this.dialog.open(CreateProjectComponent)
+    const dialogRef = this.dialog.open(CreateProjectComponent, {data: {companyId: this.companyId, teamId: this.teamId}})
   }
 
   
-  openEditDialog() {
-    const dialogRef = this.dialog.open(EditProjectComponent)
+  openEditDialog(id: number) {
+    const dialogRef = this.dialog.open(EditProjectComponent, {data: {companyId: this.companyId, teamId: this.teamId, project: this.projects[id - 1]}})
   }
 
   // Mock projects

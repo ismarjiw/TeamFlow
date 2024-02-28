@@ -21,9 +21,9 @@ export class ProjectComponent {
     }
   }
 
-  @Output() openDialog = new EventEmitter<any>()
+  @Output() openDialog = new EventEmitter<number>()
 
   dialogEvent() {
-    this.openDialog.emit()
+    this.openDialog.emit(this.project.id)
   }
 }

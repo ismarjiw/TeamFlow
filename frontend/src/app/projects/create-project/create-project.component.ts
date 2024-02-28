@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Announcement, AnnouncementService } from 'src/app/services/announcement.service';
@@ -32,7 +32,8 @@ export class CreateProjectComponent {
     private projectService: ProjectService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
-    private fb: FormBuilder) {
+    private fb: FormBuilder, 
+    @Inject(MAT_DIALOG_DATA) public data: any) {
     this.projectForm = this.fb.group({})
   }
 
@@ -43,14 +44,11 @@ export class CreateProjectComponent {
       description: ['', Validators.required]
     });
 
-    // Grab companyId from URL
-    this.route.params.subscribe(params => {
-      this.companyId = params['companyId'],
-      this.teamId = params['teamId']
-    });
+    this.companyId = this.data.companyId
+    this.teamId = this.data.teamId
 
     // TODO: implement once teamservice is merged
-    // this.team = getTeam()
+    // this.team = getTeam(this.teamId)
   }
 
 
