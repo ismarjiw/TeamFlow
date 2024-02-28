@@ -1,13 +1,16 @@
 <app-navmenu></app-navmenu>
 <app-navmenu-mobile></app-navmenu-mobile>
-<div>
-	<button routerLink="/teams">back</button>
-	<h1>Projects for {{team.name}}</h1>
-</div>
-<div>
-	<button (click)="openCreateDialog()">New</button>
+<div class="container">
 	<div>
-		<app-project *ngFor="let project of projects" [project]="project" (openDialog)="openEditDialog($event)"></app-project>	
+		<button routerLink="/teams">back</button>
+		<h1>Projects for {{team.name}}</h1>
 	</div>
+	<div>
+		<button (click)="openCreateDialog()">New</button>
+		<div>
+			<app-project *ngFor="let project of projects" [project]="project"
+				(openDialog)="openEditDialog($event)"></app-project>
+		</div>
 
+	</div>
 </div>

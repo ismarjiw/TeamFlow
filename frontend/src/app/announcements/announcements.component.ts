@@ -30,7 +30,7 @@ export class AnnouncementsComponent implements OnInit {
     //   .then((announcements) => this.announcements = announcements)
     // });
 
-    // this.admin = Boolean(localStorage.getItem('admin'))
+    this.admin = Boolean(localStorage.getItem('admin'))
   }
 
   openCreateAnnouncement() {

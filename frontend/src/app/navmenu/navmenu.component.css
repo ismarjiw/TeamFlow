@@ -1,0 +1,17 @@
+nav {
+	display: flex;
+	flex-direction: row;
+}
+
+a {
+	margin: 0 10px;
+}
+
+.nav-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav-container div {
+	display: flex;
+}

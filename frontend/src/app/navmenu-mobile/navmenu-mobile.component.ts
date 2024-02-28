@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./navmenu-mobile.component.css']
 })
 export class NavmenuMobileComponent {
+  menuShown: boolean = false
 
+  toggleMenu() {
+    this.menuShown = !this.menuShown
+  }
 }

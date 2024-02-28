@@ -10,7 +10,7 @@ export type Announcement = {
 		profile: {
 			firstname: string,
 			lastname: string,
-			email:string,
+			email: string,
 			phone: string
 		},
 		isAdmin: boolean,
@@ -28,16 +28,18 @@ export class AnnouncementService {
 
 	getAnnouncements(companyId: number) {
 		return fetch(this.apiUrl + `/company/${companyId}/announcements`)
-				.then((response) => response.json())
-				.catch(err => console.log(err))
+			.then((response) => response.json())
+			.catch(err => console.log(err))
 	}
 
 	// Need to change announcement to an announcement object type and user to a user object once we figure all that out
 	createAnnouncement(companyId: number, announcement: Announcement) {
-		return fetch(this.apiUrl + `/company/${companyId}/announcements`, 
-			{method: "POST", 
-			headers: {"Content-Type": "application/json"},
-			body: JSON.stringify(announcement)})
+		return fetch(this.apiUrl + `/company/${companyId}/announcements`,
+			{
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(announcement)
+			})
 			.catch((err) => console.log(err))
-	} 
+	}
 }

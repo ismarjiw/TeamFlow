@@ -1,9 +1,16 @@
-<div>
-    <nav>
+<div class="mobile">
+    <!-- Will implement font awesome icons later -->
+    <!-- <i class="fa-solid fa-bars"></i> -->
+    <img src="../../assets/placeholder.jpg" class="avatar-img">
+    <button (click)="toggleMenu()">Toggle menu</button>
+    <div *ngIf="menuShown">
+    <nav >
         <a routerLink="/announcements"><h1>Home</h1></a>
         <a routerLink="/company"><h1>Company</h1></a>
         <a routerLink="/teams"><h1>Teams</h1></a>
 		<a routerLink="/users"><h1>Users</h1></a>
         <a routerLink="/"><h1>Logout</h1></a>
     </nav>
+    </div>
+
 </div>

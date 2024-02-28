@@ -1,0 +1,10 @@
+.project { 
+	display: flex;
+	justify-content: center;
+	text-align: left;
+	width:100%
+}
+
+.info {
+	display: flex;
+}

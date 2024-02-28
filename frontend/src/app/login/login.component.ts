@@ -22,13 +22,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // FOR TESTING, REMOVE ONCE AUTHENTICATION WORKS
-    localStorage.setItem('authenticated', 'true')
+    localStorage.setItem('admin', 'true')
 
     // Logout user when routing to login page
     // localStorage.clear()
   }
   
   signIn = () => {
+    if(this.email.errors || this.password.errors) {
+      alert("email or password contains errors")
+      return
+    }
     this.loginService.authenticate(this.email.value, this.password.value)
     .then((user: any) => {
       // Store user data and whether admin privileges are active in localstorage
