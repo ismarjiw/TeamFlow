@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompanylistselectorComponent } from './components/companylistselector/companylistselector.component';
-import { HomeComponent } from './components/home/home.component';
 import { TeamsComponent } from './components/teams/teams.component';
 import { TeamComponent } from './components/teams/team/team.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,14 +27,12 @@ import { CreateAnnouncementComponent } from './announcements/create-announcement
 import { ProjectComponent } from './projects/project/project.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
 import { EditProjectComponent } from './projects/edit-project/edit-project.component';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog'
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     CompanylistselectorComponent,
-    HomeComponent,
     TeamsComponent,
     TeamComponent,
     CreateteamComponent,

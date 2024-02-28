@@ -24,10 +24,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // FOR TESTING, REMOVE ONCE AUTHENTICATION WORKS
-    // localStorage.setItem('admin', 'true')
+    localStorage.setItem('admin', 'true')
 
     // Logout user when routing to login page
-    localStorage.clear();
+    localStorage.clear()
   }
   
   signIn = () => {
