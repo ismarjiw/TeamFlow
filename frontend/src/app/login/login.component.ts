@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { LoginService } from '../services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService, private router: Router) {
   }
 
   loginForm: FormGroup = new FormGroup({
@@ -36,8 +37,11 @@ export class LoginComponent implements OnInit {
     this.loginService.authenticate(this.email.value, this.password.value)
     .then((user: any) => {
       // Store user data and whether admin privileges are active in localstorage
-      localStorage.setItem('admin', user.isAdmin.toString())
-      localStorage.setItem('user', JSON.stringify(user))
+      // localStorage.setItem('admin', user.isAdmin.toString())
+      // localStorage.setItem('user', JSON.stringify(user))
+    })
+    .then(() => {
+      this.router.navigateByUrl('/announcements')
     })
     .catch((err) => console.log(err))
   }

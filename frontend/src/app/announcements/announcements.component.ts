@@ -40,7 +40,7 @@ export class AnnouncementsComponent implements OnInit {
     // Mock announcements 
     announcements: Announcement[] = [{
       id: 1,
-      date: "",
+      date: "February 28, 2024",
       title: '',
       message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed maximus nisi nisi, vitae interdum quam imperdiet vitae. Donec et erat at dolor aliquam porta.',
       author: {
@@ -50,7 +50,7 @@ export class AnnouncementsComponent implements OnInit {
     },
     {
       id: 2,
-      date: "",
+      date: "February 25, 2024",
       title: '',
       message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed maximus nisi nisi, vitae interdum quam imperdiet vitae. Donec et erat at dolor aliquam porta.',
       author: {
