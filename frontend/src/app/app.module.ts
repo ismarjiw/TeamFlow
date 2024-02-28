@@ -18,7 +18,6 @@ import { CreateteamComponent } from './modals/createteam/createteam.component';
 import { UserregistryComponent } from './components/userregistry/userregistry.component';
 import { MatTableModule } from '@angular/material/table';
 import { AdduserComponent } from './modals/adduser/adduser.component';
-import { AdduserComponent } from './adduser/adduser.component';
 import { LoginComponent } from './login/login.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
