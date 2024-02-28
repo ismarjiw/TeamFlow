@@ -13,6 +13,7 @@ import { Project, ProjectService } from 'src/app/services/project.service';
   styleUrls: ['./create-project.component.css']
 })
 export class CreateProjectComponent {
+  @Output() createdProject = new EventEmitter<Project>()
   projectForm: FormGroup;
   user: any
   companyId: number = -1;
@@ -66,7 +67,10 @@ export class CreateProjectComponent {
 
     // Pass obj to POST method and close modal
     this.projectService.createProject(this.companyId, this.teamId, project)
-    .then(() => this.dialog.closeAll())
+    .then((project) => {
+      this.createdProject.emit(project)
+      this.dialog.closeAll()
+    })
   }
 }
 

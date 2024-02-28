@@ -16,6 +16,8 @@ export class ProjectsComponent {
   companyId: number = -1
   teamId: number = -1
   admin: boolean = false
+  projects: Map<number, Project> = new Map();
+
   team: any = {
     id: 1,
     name: "Team 1",
@@ -31,11 +33,10 @@ export class ProjectsComponent {
 
     // Grab company and team id from URL, then get projects
     this.route.params.subscribe(params => {
-      console.log(params)
       this.companyId = params['cid']
       this.teamId = params['tid']
       this.projectService.getProjects(this.companyId, this.teamId)
-      .then((projects) => this.projects = projects)
+      .then((projects) => projects.map((project) => this.projects.set(project.id, project)))
     });
 
     // this.admin = Boolean(localStorage.getItem('admin'))
@@ -43,63 +44,12 @@ export class ProjectsComponent {
 
   openCreateDialog() {
     const dialogRef = this.dialog.open(CreateProjectComponent, {data: {companyId: this.companyId, teamId: this.teamId}})
+    dialogRef.componentInstance.createdProject.subscribe((project) => this.projects.set(project.id, project))
   }
 
   
   openEditDialog(id: number) {
-    const dialogRef = this.dialog.open(EditProjectComponent, {data: {companyId: this.companyId, teamId: this.teamId, project: this.projects[id - 1]}})
+    const dialogRef = this.dialog.open(EditProjectComponent, {data: {companyId: this.companyId, teamId: this.teamId, project: this.projects.get(id)}})
+    dialogRef.componentInstance.editedProject.subscribe((project) => this.projects.set(project.id, project))
   }
-
-  // Mock projects
-  projects: Project[] = [{
-    id: 1,
-    date: "",
-		name: "Project 1",
-		description: "Complete tasks on project 1",
-		active: true,
-		team: {
-			name: "Team 1",
-			description: "team 1, duh",
-			users: [{
-				profile: {firstname: "Adam", lastname: "Anderson",email:"email@email.com", phone: "12345678"},
-				isAdmin: false,
-				active: true,
-				status: ""
-			}]
-		}
-	}, 
-  {
-    id: 2,
-    date: "",
-		name: "Project 2",
-		description: "Complete tasks on project 2",
-		active: true,
-		team: {
-			name: "Team 2",
-			description: "team 2, duh",
-			users: [{
-				profile: {firstname: "Adam", lastname: "Anderson",email:"email@email.com", phone: "12345678"},
-				isAdmin: false,
-				active: true,
-				status: ""
-			}]
-		}
-	}, 
-  {
-    id: 3,
-    date: "",
-		name: "Project 3",
-		description: "Complete tasks on project 3",
-		active: true,
-		team: {
-			name: "Team 3",
-			description: "team 3, duh",
-			users: [{
-				profile: {firstname: "Adam", lastname: "Anderson",email:"email@email.com", phone: "12345678"},
-				isAdmin: false,
-				active: true,
-				status: ""
-			}]
-		}
-	}]
 }
