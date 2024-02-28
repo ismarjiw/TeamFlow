@@ -3,7 +3,7 @@
 <div>
 	<div>
 		<h1>Announcements</h1>
-		<button (click)="openCreateAnnouncement()">New</button>
+		<button *ngIf="admin" (click)="openCreateAnnouncement()">New</button>
 	</div>
 	<div>
 		<app-announcement *ngFor="let announcement of announcements" [announcement]="announcement"></app-announcement>

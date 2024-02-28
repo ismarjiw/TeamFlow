@@ -12,8 +12,9 @@ export class LoginComponent implements OnInit {
   }
 
   loginForm: FormGroup = new FormGroup({
-    email: new FormControl<string>('', [Validators.pattern('[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}'), Validators.maxLength(30), Validators.minLength(6)]),
-    password: new FormControl<string>('', [Validators.minLength(6)])
+    // Validates that email follows example@example.com pattern
+    email: new FormControl<string>('', [Validators.pattern('[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}'), Validators.maxLength(30), Validators.minLength(6), Validators.required]),
+    password: new FormControl<string>('', [Validators.minLength(6), Validators.required])
   })
 
   email = this.loginForm.controls['email']
@@ -26,5 +27,11 @@ export class LoginComponent implements OnInit {
   
   signIn = () => {
     this.loginService.authenticate(this.email.value, this.password.value)
+    .then((user: any) => {
+      // Store user data and whether admin privileges are active in localstorage
+      localStorage.setItem('admin', user.isAdmin.toString())
+      localStorage.setItem('user', JSON.stringify(user))
+    })
+    .catch((err) => console.log(err))
   }
 }

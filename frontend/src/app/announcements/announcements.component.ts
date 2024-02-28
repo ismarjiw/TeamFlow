@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
+import { AnnouncementService } from '../services/announcement.service';
 
 
 @Component({
@@ -10,33 +11,44 @@ import { CreateAnnouncementComponent } from './create-announcement/create-announ
   styleUrls: ['./announcements.component.css']
 })
 export class AnnouncementsComponent implements OnInit {
-  constructor(private router: Router, private dialog: MatDialog) {}
+  constructor(private router: Router, private route: ActivatedRoute, private dialog: MatDialog, private announceService: AnnouncementService) {}
 
-  // Mock announcements 
-  announcements = [{
-    id: 1,
-    date: 1,
-    title: '',
-    message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed maximus nisi nisi, vitae interdum quam imperdiet vitae. Donec et erat at dolor aliquam porta.',
-    author: {profile: {firstname:'Chris', lastname:'Chris', email:'asdf@asdf.asdf', phone:'123456789', isAdmin: true, active:true}}
-  },
-  {
-    id: 2,
-    date: 1,
-    title: '',
-    message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed maximus nisi nisi, vitae interdum quam imperdiet vitae. Donec et erat at dolor aliquam porta.',
-    author: {profile: {firstname:'James', lastname:'Chris', email:'asdf@asdf.asdf', phone:'123456789', isAdmin: true, active:true}}
-  }]
+  companyId: number = -1
+  admin: boolean = false
+
   
   ngOnInit(): void {
     // COMMENTED FOR DEV, UNCOMMENT ONCE DONE
     // if(localStorage.getItem('authenticated') != 'true') {
     //   this.router.navigateByUrl('/')
     // }
+
+    // Grab company id from URL
+    this.route.params.subscribe(params => {
+      this.companyId = params['companyId']
+      this.announcements = this.announceService.getAnnouncements(this.companyId)
+    });
+
+    this.admin = Boolean(localStorage.getItem('admin'))
   }
 
   openCreateAnnouncement() {
     const dialogRef = this.dialog.open(CreateAnnouncementComponent)
    }
-   
+
+    // Mock announcements 
+    announcements: any = [{
+      id: 1,
+      date: 1,
+      title: '',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed maximus nisi nisi, vitae interdum quam imperdiet vitae. Donec et erat at dolor aliquam porta.',
+      author: {profile: {firstname:'Chris', lastname:'Chris', email:'asdf@asdf.asdf', phone:'123456789', isAdmin: true, active:true}}
+    },
+    {
+      id: 2,
+      date: 1,
+      title: '',
+      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed maximus nisi nisi, vitae interdum quam imperdiet vitae. Donec et erat at dolor aliquam porta.',
+      author: {profile: {firstname:'James', lastname:'Chris', email:'asdf@asdf.asdf', phone:'123456789', isAdmin: true, active:true}}
+    }]
 }
