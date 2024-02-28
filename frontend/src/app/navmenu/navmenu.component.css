@@ -1,17 +1,40 @@
 nav {
 	display: flex;
 	flex-direction: row;
+	margin: 0;
+}
+
+h1 {
+ margin: 30px 20px 20px 10px;
 }
 
 a {
-	margin: 0 10px;
+	color: var(--header-color);
+	text-decoration: none;
+}
+
+a:hover {
+	transition: 0.45s;
+	color: #22cbc0
+}
+
+h3 {
+	color: var(--loggedin-color);
+	font-size: 25px;
+	font-weight: 400;
 }
 
 .nav-container {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	outline: solid 2px var(--outline-color);
 }
 
 .nav-container div {
 	display: flex;
+}
+
+.avatar-img {
+	margin: 0 30px;
 }
