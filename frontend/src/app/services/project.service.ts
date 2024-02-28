@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 
 export type Project = 
 	{
+		id: number,
+		date: string,
 		name: string,
 		description: string,
 		active: boolean,
@@ -13,7 +15,7 @@ export type Project =
 				isAdmin: boolean,
 				active: boolean,
 				status: string
-			}]
+			} | null]
 		}
 	}
 
@@ -24,7 +26,7 @@ export type Project =
 export class ProjectService {
 	apiUrl: string = "http://localhost:4200/"
 
-	getProjects(companyId: number, teamId: number) {
+	getProjects(companyId: number, teamId: number): Promise<Project[]> {
 		return fetch(this.apiUrl + `/company/${companyId}/teams/${teamId}/projects`)
 				.then((response) => response.json())
 				.catch(err => console.log(err))

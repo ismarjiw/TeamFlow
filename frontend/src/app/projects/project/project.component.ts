@@ -1,10 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Project } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css']
 })
-export class ProjectComponent {
 
+export class ProjectComponent {
+  @Input() project: Project = {
+    id: 1,
+    date: "",
+    name: '',
+    description: '',
+    active: false,
+    team: {
+      name: '',
+      description: '',
+      users: [null]
+    }
+  }
 }

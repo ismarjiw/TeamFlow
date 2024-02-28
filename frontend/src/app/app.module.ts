@@ -18,6 +18,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { CreateAnnouncementComponent } from './announcements/create-announcement/create-announcement.component';
 import { ProjectComponent } from './projects/project/project.component';
+import { CreateProjectComponent } from './projects/create-project/create-project.component';
+import { EditProjectComponent } from './projects/edit-project/edit-project.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ProjectComponent } from './projects/project/project.component';
     NavmenuMobileComponent,
     AnnouncementComponent,
     CreateAnnouncementComponent,
-    ProjectComponent, 
+    ProjectComponent,
+    CreateProjectComponent,
+    EditProjectComponent, 
   ],
   imports: [
     BrowserModule,

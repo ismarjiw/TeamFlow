@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
-import { AnnouncementService } from '../services/announcement.service';
+import { Announcement, AnnouncementService } from '../services/announcement.service';
 
 
 @Component({
@@ -24,12 +24,13 @@ export class AnnouncementsComponent implements OnInit {
     // }
 
     // Grab company id from URL
-    this.route.params.subscribe(params => {
-      this.companyId = params['companyId']
-      this.announcements = this.announceService.getAnnouncements(this.companyId)
-    });
+    // this.route.params.subscribe(params => {
+    //   this.companyId = params['companyId']
+    //   this.announceService.getAnnouncements(this.companyId)
+    //   .then((announcements) => this.announcements = announcements)
+    // });
 
-    this.admin = Boolean(localStorage.getItem('admin'))
+    // this.admin = Boolean(localStorage.getItem('admin'))
   }
 
   openCreateAnnouncement() {
@@ -37,18 +38,24 @@ export class AnnouncementsComponent implements OnInit {
    }
 
     // Mock announcements 
-    announcements: any = [{
+    announcements: Announcement[] = [{
       id: 1,
-      date: 1,
+      date: "",
       title: '',
       message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed maximus nisi nisi, vitae interdum quam imperdiet vitae. Donec et erat at dolor aliquam porta.',
-      author: {profile: {firstname:'Chris', lastname:'Chris', email:'asdf@asdf.asdf', phone:'123456789', isAdmin: true, active:true}}
+      author: {
+        profile: { firstname: 'Chris', lastname: 'Chris', email: 'asdf@asdf.asdf', phone: '123456789' }, isAdmin: true, active: true,
+        status: ''
+      }
     },
     {
       id: 2,
-      date: 1,
+      date: "",
       title: '',
       message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed maximus nisi nisi, vitae interdum quam imperdiet vitae. Donec et erat at dolor aliquam porta.',
-      author: {profile: {firstname:'James', lastname:'Chris', email:'asdf@asdf.asdf', phone:'123456789', isAdmin: true, active:true}}
+      author: {
+        profile: { firstname: 'James', lastname: 'Chris', email: 'asdf@asdf.asdf', phone: '123456789' }, isAdmin: true, active: true,
+        status: ''
+      }
     }]
 }

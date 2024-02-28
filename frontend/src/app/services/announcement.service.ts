@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
 export type Announcement = {
+	id: number,
+	date: string,
 	title: string,
 	message: string,
 	author: {

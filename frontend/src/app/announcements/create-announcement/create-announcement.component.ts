@@ -47,6 +47,8 @@ export class CreateAnnouncementComponent {
   onSubmit() {
     // Create a new announcement object
     const announcement: Announcement = {
+      id: -1,
+      date: "",
       title: this.announcementForm.controls['title'].value,
       message: this.announcementForm.controls['message'].value,
       author: this.user

@@ -1,1 +1,11 @@
-<p>project works!</p>
+<div>
+	<div>
+		<h2>{{project.name}}</h2>
+		<p *ngIf="project.active">Active</p>
+		<p *ngIf="!project.active">Inactive</p>
+	</div>
+	<p>{{project.description}}</p>	
+</div>
+<div>
+		<button>Edit</button>
+	</div>
