@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { TeamsService } from '../services/teams/teams.service';
+import { TeamsService } from '../../services/teams/teams.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateteamComponent } from '../createteam/createteam.component';
+import { CreateteamComponent } from '../../modals/createteam/createteam.component';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

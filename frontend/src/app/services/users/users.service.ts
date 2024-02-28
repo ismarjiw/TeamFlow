@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { AddUserEntry } from 'src/app/adduser/adduser.component';
-import { UserEntry } from 'src/app/userregistry/userregistry.component';
+import { AddUserEntry } from 'src/app/modals/adduser/adduser.component';
+import { UserEntry } from 'src/app/components/userregistry/userregistry.component';
 
 @Injectable({
   providedIn: 'root'

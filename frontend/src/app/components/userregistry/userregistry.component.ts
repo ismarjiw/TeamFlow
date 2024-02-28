@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { UsersService } from '../services/users/users.service';
+import { UsersService } from '../../services/users/users.service';
 import { MatDialog } from '@angular/material/dialog';
-import { AddUserEntry, AdduserComponent } from '../adduser/adduser.component';
+import { AddUserEntry, AdduserComponent } from '../../modals/adduser/adduser.component';
 import { take } from 'rxjs';
 
 export interface UserEntry {

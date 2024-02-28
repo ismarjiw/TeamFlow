@@ -1,7 +1,7 @@
-import { UsersService } from './../services/users/users.service';
+import { UsersService } from '../../services/users/users.service';
 import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserEntry } from '../userregistry/userregistry.component';
+import { UserEntry } from '../../components/userregistry/userregistry.component';
 import { MatDialog } from '@angular/material/dialog';
 
 export interface AddUserEntry {
