@@ -57,6 +57,7 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	@Override 
 	public ProjectDto updateProject(ProjectDto project, Long companyId, Long teamId, Long projectId) {
+		
 		Optional<Project> projecter = projectRepository.findById(projectId);
 		if(projecter.isEmpty()) {
 			throw new NotFoundException("project not found.");
@@ -66,6 +67,16 @@ public class ProjectServiceImpl implements ProjectService {
 		
 		if(p.isActive() == false) {
 			throw new NotFoundException("project not found");
+		}
+		
+		Team team = p.getTeam();
+		
+		if(!team.getId().equals(teamId)) {
+			throw new BadRequestException("TeamId does not match with team associted with project.");
+		}
+		
+		if(!team.getCompany().getId().equals(companyId)) {
+			throw new BadRequestException("CompanyId doesn not match with project.");
 		}
 		
 		if(project.getName() != null) {

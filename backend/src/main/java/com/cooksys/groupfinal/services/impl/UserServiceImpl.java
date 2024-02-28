@@ -116,6 +116,18 @@ public class UserServiceImpl implements UserService {
 		
 		User user = userOp.get();
 		
+		Company company = new Company();
+		
+		for(Company c: user.getCompanies()) {
+			if(c.getId().equals(id)) {
+				company = c;
+			}
+		}
+		
+		if(company == null) {
+			throw new NotFoundException("The user is not located at this company.");
+		}
+		
 		user.setActive(false);
 		
 		return fullUserMapper.entityToFullUserDto(userRepository.saveAndFlush(user));

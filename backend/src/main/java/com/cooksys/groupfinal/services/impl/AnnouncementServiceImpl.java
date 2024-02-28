@@ -32,7 +32,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		
 		User user = verifyCredentials(cred);
 		
-		if(!user.isAdmin) {
+		if(!user.isAdmin()) {
 			throw new NotAuthorizedException("This user is not authorized.");
 		}
 		
