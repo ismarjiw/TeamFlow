@@ -1,14 +1,20 @@
+<div class="body">
 <h2 mat-dialog-title>Create Team</h2>
-<form [formGroup]="announcementForm">
-	<mat-form-field appearance="fill">
+<form style="border-radius: 20px; border-top: 1px; border-color: gold;" [formGroup]="announcementForm">
+	<div class="input" style="vertical-align: top;" >
+	<mat-form-field appearance="outline">
 		<mat-label>Title</mat-label>
-		<input matInput formControlName="title">
+		<input matInput color="text" formControlName="title">
 	</mat-form-field>
-	<mat-form-field appearance="fill">
+	</div>
+	<div class="input" style="vertical-align: bottom;" >
+	<mat-form-field appearance="outline">
 		<mat-label>Message</mat-label>
-		<input matInput formControlName="message">
+		<input matInput color="text" formControlName="message">
 	</mat-form-field>
+	</div>
 	<div mat-dialog-actions>
 		<button mat-button (click)="onSubmit()" type="submit">Create Announcement</button>
 	</div>
 </form>
+</div>
