@@ -13,22 +13,22 @@ import { Announcement, AnnouncementService } from '../services/announcement.serv
 export class AnnouncementsComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private dialog: MatDialog, private announceService: AnnouncementService) {}
 
-  companyId: number = -1
+  companyId: number = 6
   admin: boolean = false
 
   
   ngOnInit(): void {
     // COMMENTED FOR DEV, UNCOMMENT ONCE DONE
-    // if(localStorage.getItem('authenticated') != 'true') {
-    //   this.router.navigateByUrl('/')
-    // }
+    if(localStorage.getItem('authenticated') != 'true') {
+      this.router.navigateByUrl('/')
+    }
 
     // Grab company id from URL
-    // this.route.params.subscribe(params => {
-    //   this.companyId = params['companyId']
-    //   this.announceService.getAnnouncements(this.companyId)
-    //   .then((announcements) => this.announcements = announcements)
-    // });
+    this.route.params.subscribe(params => {
+      // this.companyId = params['companyId']
+      this.announceService.getAnnouncements(this.companyId)
+      .then((announcements) => this.announcements = announcements)
+    });
 
     this.admin = Boolean(localStorage.getItem('admin'))
   }

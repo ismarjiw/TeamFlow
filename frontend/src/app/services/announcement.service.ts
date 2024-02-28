@@ -24,10 +24,16 @@ export type Announcement = {
 })
 
 export class AnnouncementService {
-	apiUrl: string = "http://localhost:4200/"
+	apiUrl: string = "http://localhost:8080/"
 
 	getAnnouncements(companyId: number) {
-		return fetch(this.apiUrl + `/company/${companyId}/announcements`)
+		return fetch(this.apiUrl + `/company/${companyId}/announcements/`,
+		{
+			method: "GET",
+			mode: "cors",
+			headers: { "Content-Type": "application/json",
+			"Access-Control-Allow-Origin": "*"}
+	})
 			.then((response) => response.json())
 			.catch(err => console.log(err))
 	}
@@ -37,7 +43,9 @@ export class AnnouncementService {
 		return fetch(this.apiUrl + `/company/${companyId}/announcements`,
 			{
 				method: "POST",
-				headers: { "Content-Type": "application/json" },
+				mode: "cors",
+				headers: { "Content-Type": "application/json",
+				"Access-Control-Allow-Origin": "*"},
 				body: JSON.stringify(announcement)
 			})
 			.catch((err) => console.log(err))

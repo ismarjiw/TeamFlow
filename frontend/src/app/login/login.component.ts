@@ -23,10 +23,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // FOR TESTING, REMOVE ONCE AUTHENTICATION WORKS
-    localStorage.setItem('admin', 'true')
+    // localStorage.setItem('admin', 'true')
 
     // Logout user when routing to login page
-    // localStorage.clear()
+    localStorage.clear();
   }
   
   signIn = () => {
@@ -36,9 +36,11 @@ export class LoginComponent implements OnInit {
     }
     this.loginService.authenticate(this.email.value, this.password.value)
     .then((user: any) => {
+      console.log(user);
       // Store user data and whether admin privileges are active in localstorage
-      // localStorage.setItem('admin', user.isAdmin.toString())
-      // localStorage.setItem('user', JSON.stringify(user))
+      localStorage.setItem('admin', user.admin.toString())
+      localStorage.setItem('user', JSON.stringify(user))
+      localStorage.setItem('authenticated', 'true')
     })
     .then(() => {
       this.router.navigateByUrl('/announcements')
