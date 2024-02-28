@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TeamsComponent {
   teams: any[] = [];
-
+companyId: number = 6;
   constructor(
     private teamsService: TeamsService,
     public dialog: MatDialog,
@@ -31,10 +31,25 @@ export class TeamsComponent {
 //         );
 //       }
 ngOnInit() {
-    // Assuming TeamsService has a method to fetch teams from the endpoint
-    this.teamsService.getTeamsByCompany(6).subscribe(
+    if (!this.companyId) {
+        // If not set, initialize it to a default value
+        this.companyId = 6;
+      }
+
+      // Subscribe to route parameters
+      this.route.params.subscribe(params => {
+        // Update this.companyId with the value from params['cid']
+        // if it is provided in the route parameters
+        if (params['cid']) {
+          this.companyId = +params['cid']; // Convert to number if needed
+        }
+
+        // Rest of your logic goes here based on the updated this.companyId
+      });
+    this.teams = this.teamsService.getCreatedTeams();
+    this.teamsService.getTeamsByCompany(this.companyId).subscribe(
       (teams: any[]) => {
-        this.teams = teams.concat(this.teamsService.getCreatedTeams());
+        this.teams = teams;
       },
       error => {
         console.error('Error fetching teams:', error);
