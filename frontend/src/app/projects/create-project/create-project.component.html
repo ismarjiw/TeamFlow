@@ -2,11 +2,11 @@
 <form [formGroup]="projectForm">
 	<mat-form-field appearance="fill">
 		<mat-label>Name</mat-label>
-		<input matInput formControlName="title">
+		<input matInput formControlName="name">
 	</mat-form-field>
 	<mat-form-field appearance="fill">
 		<mat-label>Description</mat-label>
-		<input matInput formControlName="message">
+		<input matInput formControlName="description">
 	</mat-form-field>
 	<div mat-dialog-actions>
 		<button mat-button (click)="onSubmit()" type="submit">Create Project</button>

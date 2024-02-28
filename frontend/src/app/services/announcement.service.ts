@@ -8,8 +8,8 @@ export type Announcement = {
 	message: string,
 	author: {
 		profile: {
-			firstname: string,
-			lastname: string,
+			firstName: string,
+			lastName: string,
 			email: string,
 			phone: string
 		},
@@ -24,22 +24,28 @@ export type Announcement = {
 })
 
 export class AnnouncementService {
-	apiUrl: string = "http://localhost:4200/"
+	apiUrl: string = "http://localhost:8080/"
 
 	getAnnouncements(companyId: number) {
-		return fetch(this.apiUrl + `/company/${companyId}/announcements`)
+		return fetch("url" + `/company/${companyId}/announcements/`,
+		{
+			method: "GET",
+			headers: { "Content-Type": "application/json",
+			"Access-Control-Allow-Origin": "*"}
+	})
 			.then((response) => response.json())
 			.catch(err => console.log(err))
 	}
 
 	// Need to change announcement to an announcement object type and user to a user object once we figure all that out
 	createAnnouncement(companyId: number, announcement: Announcement) {
-		return fetch(this.apiUrl + `/company/${companyId}/announcements`,
+		return fetch("url" + `/company/${companyId}/announcements`,
 			{
 				method: "POST",
-				headers: { "Content-Type": "application/json" },
+				headers: { "Content-Type": "application/json",
+				"Access-Control-Allow-Origin": "*"},
 				body: JSON.stringify(announcement)
-			})
+			}).then((response)=> response.json())
 			.catch((err) => console.log(err))
 	}
 }

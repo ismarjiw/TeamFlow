@@ -37,7 +37,7 @@ export class ProjectService {
 
 	// Need to change announcement to an announcement object type and user to a user object once we figure all that out
 	createProject(companyId: number, teamId: number, project: Project) {
-		return fetch(this.apiUrl + `/company/${companyId}/teams/${teamId}/projects`,
+		return fetch(`url/company/${companyId}/teams/${teamId}/projects`,
 			{
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -47,13 +47,14 @@ export class ProjectService {
 			.catch((err) => console.log(err))
 	}
 
-	editProject(companyId: number, teamId: number, projectId: number, project: Project) {
-		return fetch(this.apiUrl + `/company/${companyId}/teams/${teamId}/projects/${projectId}`,
+	editProject(companyId: number, teamId: number, projectId: number, data: {name: string, description: string, active: boolean}) {
+		return fetch(`url/company/${companyId}/teams/${teamId}/projects/${projectId}`,
 			{
 				method: "PATCH",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(project)
+				body: JSON.stringify(data)
 			})
+			.then((response) => response.json())
 			.catch((err) => console.log(err))
 	}
 }
