@@ -39,33 +39,3 @@ export class AnnouncementService {
 			.catch((err) => console.log(err))
 	} 
 }
-
-// // Announcement DTO
-// {
-// 	id: long,
-// 	date: timestamp,
-// 	title: string,
-// 	message: string,
-// 	author: {
-//   id: long,
-//   profile: {
-	//   firstname: string,
-	//   lastname: string,
-	//   email:string,
-	//   phone: string
-	// },
-//   isAdmin: boolean,
-//   active: boolean,
-//   status: string
-// }
-//   }
-
-// // BasicUserDTO
-
-// {
-// 	id: long,
-// 	profile: ProfileDto,
-// 	isAdmin: boolean,
-// 	active: boolean,
-// 	status: string
-//   }

@@ -17,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { CreateAnnouncementComponent } from './announcements/create-announcement/create-announcement.component';
+import { ProjectComponent } from './projects/project/project.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CreateAnnouncementComponent } from './announcements/create-announcement
     NavmenuComponent,
     NavmenuMobileComponent,
     AnnouncementComponent,
-    CreateAnnouncementComponent, 
+    CreateAnnouncementComponent,
+    ProjectComponent, 
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,8 @@
-<p>projects works!</p>
+<div>
+	<button routerLink="/teams">back</p></button>
+	<h1>Projects for {{team}}</h1>
+</div>
+<div>
+	<button>New</button>
+	<app-project *ngFor(let project of team.projects) [project]="project"></app-project>
+</div>
