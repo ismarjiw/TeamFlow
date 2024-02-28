@@ -13,47 +13,34 @@ export class TeamsComponent {
   teams: any[] = [];
 
   constructor(
-    private teamsService: TeamsService, 
+    private teamsService: TeamsService,
     public dialog: MatDialog,
     private route: ActivatedRoute // to get the company ID from the route parameters
     ) {}
 
-    ngOnInit() {
-      this.teams = this.teamsService.getCreatedTeams();
-
-      //***/ to get the company specific teams array \***\\
-      // this.route.params.subscribe(params => {
-      //   const companyId = +params['companyId']; // Assuming companyId is a number
-      //   // Fetch teams associated with the company
-      //   this.teamsService.getTeamsByCompany(companyId).subscribe(teams => {
-      //     this.teams = teams;
-      //   });
-      // });
-    }
-
-  //***/ Dummy data \***\\
-  // teams = [
-  //   {
-  //     name: 'Team 1',
-  //     totalProjects: 1, 
-  //     members: ['Sherry', 'Ismarji', 'Wolfy', 'Matthew'] 
-  //   },
-  //   {
-  //     name: 'Team 2',
-  //     totalProjects: 2, 
-  //     members: ['Sherry', 'Matthew'] 
-  //   },
-  //   {
-  //     name: 'Team 3',
-  //     totalProjects: 1, 
-  //     members: ['Sherry', 'Ismarji', 'Wolfy', 'Matthew'] 
-  //   },
-  //   {
-  //     name: 'Team 4',
-  //     totalProjects: 2, 
-  //     members: ['Sherry', 'Matthew'] 
-  //   }
-  // ]
+//      ngOnInit() {
+//         this.teams = this.teamsService.getCreatedTeams();
+//         // Assuming TeamsService has a method to fetch teams from the endpoint
+//         this.teamsService.getTeamsByCompany(6).subscribe(
+//           (teams: any[]) => {
+//             this.teams = teams;
+//           },
+//           error => {
+//             console.error('Error fetching teams:', error);
+//           }
+//         );
+//       }
+ngOnInit() {
+    // Assuming TeamsService has a method to fetch teams from the endpoint
+    this.teamsService.getTeamsByCompany(6).subscribe(
+      (teams: any[]) => {
+        this.teams = teams.concat(this.teamsService.getCreatedTeams());
+      },
+      error => {
+        console.error('Error fetching teams:', error);
+      }
+    );
+  }
 
   openCreateTeamDialog() {
     const dialogRef = this.dialog.open(CreateteamComponent, {
@@ -61,7 +48,40 @@ export class TeamsComponent {
       panelClass:"custom",
     });
 
-    
+
   }
 
 }
+
+//***/ to get the company specific teams array \***\\
+      // this.route.params.subscribe(params => {
+      //   const companyId = +params['companyId']; // Assuming companyId is a number
+      //   // Fetch teams associated with the company
+      //   this.teamsService.getTeamsByCompany(companyId).subscribe(teams => {
+      //     this.teams = teams;
+      //   });
+      // });
+
+      //***/ Dummy data \***\\
+        // teams = [
+        //   {
+        //     name: 'Team 1',
+        //     totalProjects: 1,
+        //     members: ['Sherry', 'Ismarji', 'Wolfy', 'Matthew']
+        //   },
+        //   {
+        //     name: 'Team 2',
+        //     totalProjects: 2,
+        //     members: ['Sherry', 'Matthew']
+        //   },
+        //   {
+        //     name: 'Team 3',
+        //     totalProjects: 1,
+        //     members: ['Sherry', 'Ismarji', 'Wolfy', 'Matthew']
+        //   },
+        //   {
+        //     name: 'Team 4',
+        //     totalProjects: 2,
+        //     members: ['Sherry', 'Matthew']
+        //   }
+        // ]

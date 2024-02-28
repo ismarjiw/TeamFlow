@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 export type Team = {
   name: string;
@@ -13,18 +14,18 @@ export type Team = {
 export class TeamsService {
 
   // constructor(private http: HttpClient) { } // Uncomment when ready for backend
-
+// url: string = "http://localhost:8080"
   private createdTeams: Team[] = [];
-
-  // Method to create a new team  \\ think about how to display # of projects when creating a team \\ 
+constructor(private http: HttpClient) { }
+  // Method to create a new team  \\ think about how to display # of projects when creating a team \\
   createTeam(name: string, description: string, members: string[]): Observable<any> {
     const newTeam = {
       name,
       description,
       members
     };
-    this.createdTeams.push(newTeam); 
-    return of(newTeam); 
+    this.createdTeams.push(newTeam);
+    return of(newTeam);
   }
 
   getCreatedTeams(): any[] {
@@ -32,7 +33,7 @@ export class TeamsService {
   }
 
   // Add methods for future backend interaction:
-  /*
+
 
   // getTeams(): Observable<any[]> {
   //   return this.http.get<any[]>('http://localhost:8080/get-teams').pipe(
@@ -49,43 +50,62 @@ export class TeamsService {
   // }
 
   getTeamsByCompany(companyId: number): Observable<any[]> {
-    return this.http.get<any[]>(`http://localhost:8080/companies/${companyId}/teams`);
-  }
+//  const url = `${this.apiUrl}/company/${companyId}/teams`;
 
-  getTeamById(teamId: number): Observable<any> {
-    return this.http.get<any>(`http://localhost:8080/teams/${teamId}`).pipe(
-      catchError((error) => {
-        console.error(`Error fetching team with ID ${teamId}:`, error);
-        return Observable.throw(error);
-      })
-    );
-  }
+     return new Observable<any[]>(observer => {
+       fetch(`/url/company/${companyId}/teams`)
+         .then(response => {
+           if (!response.ok) {
+             throw new Error(`HTTP error! Status: ${response.status}`);
+           }
+//            console.log(response.json());
+           return response.json();
+         })
+         .then(data => {
+           observer.next(data);
+           observer.complete();
+         })
+         .catch(error => {
+           observer.error(error);
+           observer.complete();
+         });
+     });
+   }
 
-  createTeam(teamData: any): Observable<any> {
-    return this.http.post<any>('http://localhost:8080/teams', teamData).pipe(
-      catchError((error) => {
-        console.error('Error creating team:', error);
-        return Observable.throw(error);
-      })
-    );
-  }
+//   getTeamById(teamId: number): Observable<any> {
+//     return this.http.get<any>(`http://localhost:8080/teams/${teamId}`).pipe(
+//       catchError((error) => {
+//         console.error(`Error fetching team with ID ${teamId}:`, error);
+//         return Observable.throw(error);
+//       })
+//     );
+//   }
+//
+//   createTeam(teamData: any): Observable<any> {
+//     return this.http.post<any>('http://localhost:8080/teams', teamData).pipe(
+//       catchError((error) => {
+//         console.error('Error creating team:', error);
+//         return Observable.throw(error);
+//       })
+//     );
+//   }
+//
+//   updateTeam(teamId: number, updatedData: any): Observable<any> {
+//     return this.http.put<any>(`http://localhost:8080/teams/${teamId}`, updatedData).pipe(
+//       catchError((error) => {
+//         console.error(`Error updating team with ID ${teamId}:`, error);
+//         return Observable.throw(error);
+//       })
+//     );
+//   }
+//
+//   deleteTeam(teamId: number): Observable<any> {
+//     return this.http.delete<any>(`http://localhost:8080/teams/${teamId}`).pipe(
+//       catchError((error) => {
+//         console.error(`Error deleting team with ID ${teamId}:`, error);
+//         return Observable.throw(error);
+//       })
+//     );
+//   }
 
-  updateTeam(teamId: number, updatedData: any): Observable<any> {
-    return this.http.put<any>(`http://localhost:8080/teams/${teamId}`, updatedData).pipe(
-      catchError((error) => {
-        console.error(`Error updating team with ID ${teamId}:`, error);
-        return Observable.throw(error);
-      })
-    );
-  }
-
-  deleteTeam(teamId: number): Observable<any> {
-    return this.http.delete<any>(`http://localhost:8080/teams/${teamId}`).pipe(
-      catchError((error) => {
-        console.error(`Error deleting team with ID ${teamId}:`, error);
-        return Observable.throw(error);
-      })
-    );
-  }
-  */
 }
