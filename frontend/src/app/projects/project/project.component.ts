@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Project } from 'src/app/services/project.service';
 
 @Component({
@@ -19,5 +19,11 @@ export class ProjectComponent {
       description: '',
       users: [null]
     }
+  }
+
+  @Output() openDialog = new EventEmitter<any>()
+
+  dialogEvent() {
+    this.openDialog.emit()
   }
 }

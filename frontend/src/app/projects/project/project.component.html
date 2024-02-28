@@ -4,8 +4,8 @@
 		<p *ngIf="project.active">Active</p>
 		<p *ngIf="!project.active">Inactive</p>
 	</div>
-	<p>{{project.description}}</p>	
+	<p>{{project.description}}</p>
 </div>
 <div>
-		<button>Edit</button>
-	</div>
+	<button (click)="dialogEvent()">Edit</button>
+</div>

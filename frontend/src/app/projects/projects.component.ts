@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Project, ProjectService } from '../services/project.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateProjectComponent } from './create-project/create-project.component';
+import { EditProjectComponent } from './edit-project/edit-project.component';
 
 @Component({
   selector: 'app-projects',
@@ -41,6 +42,11 @@ export class ProjectsComponent {
 
   openCreateDialog() {
     const dialogRef = this.dialog.open(CreateProjectComponent)
+  }
+
+  
+  openEditDialog() {
+    const dialogRef = this.dialog.open(EditProjectComponent)
   }
 
   // Mock projects

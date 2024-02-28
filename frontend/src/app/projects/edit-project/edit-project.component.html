@@ -1,1 +1,21 @@
-<p>edit-project works!</p>
+<h2 mat-dialog-title>Create Team</h2>
+<form [formGroup]="projectForm">
+	<mat-form-field appearance="fill">
+		<mat-label>Name</mat-label>
+		<input matInput formControlName="name">
+	</mat-form-field>
+	<mat-form-field appearance="fill">
+		<mat-label>Description</mat-label>
+		<input matInput formControlName="description">
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Active?</mat-label>
+		<mat-select formControlName="active">
+			<mat-option value="true">Active</mat-option>
+			<mat-option value="false">Inactive</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<div mat-dialog-actions>
+		<button mat-button (click)="onSubmit()" type="submit">Edit Project</button>
+	</div>
+</form>

@@ -20,6 +20,8 @@ import { CreateAnnouncementComponent } from './announcements/create-announcement
 import { ProjectComponent } from './projects/project/project.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
 import { EditProjectComponent } from './projects/edit-project/edit-project.component';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog'
+
 
 @NgModule({
   declarations: [

@@ -8,4 +8,7 @@
 		<mat-label>Description</mat-label>
 		<input matInput formControlName="message">
 	</mat-form-field>
+	<div mat-dialog-actions>
+		<button mat-button (click)="onSubmit()" type="submit">Create Project</button>
+	</div>
 </form>
