@@ -31,11 +31,19 @@ export class CompanylistselectorComponent {
     });
     this.admin = localStorage.getItem('admin') === 'true'
 
-    // TODO: If we have time, implement this!
-    // this.user = JSON.parse(localStorage.getItem('user'))
-    // if(!this.admin) {
-    //   this.router.navigateByUrl(`/company/${user.companies[0]}/announcements`)
-    // }
+    if(localStorage.getItem('authenticated') != 'true') {
+      this.router.navigateByUrl('/')
+    }
+    
+    if(!this.admin) {
+      let cid = localStorage.getItem('cid')
+      if(cid) {
+        const id = parseInt(cid)
+        this.router.navigateByUrl(`/company/${id}/announcements`)
+      } else {
+        this.router.navigateByUrl(`/`)
+      }
+    }
     }
 
   onSubmit() {

@@ -8,4 +8,10 @@ import { Component, Input } from '@angular/core';
 export class NavmenuComponent {
   @Input() companyId: number = -1
   @Input() teamId: number = -1
+  admin: boolean = false
+  name: string | null = "";
+  ngOnInit() {
+    this.admin = localStorage.getItem('admin') === 'true'
+    this.name = localStorage.getItem('name')
+  }
 }

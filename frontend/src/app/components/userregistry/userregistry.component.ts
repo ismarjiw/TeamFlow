@@ -33,6 +33,11 @@ export class UserregistryComponent {
       this.usersService.setCompanyId(this.companyId);
     });
     this.admin = localStorage.getItem('admin') === 'true'
+    
+    if(localStorage.getItem('authenticated') != 'true') {
+      this.router.navigateByUrl('/')
+    }
+
     if(!this.admin) {
       this.router.navigateByUrl('/')
     }

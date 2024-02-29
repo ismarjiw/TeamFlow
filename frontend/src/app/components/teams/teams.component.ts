@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TeamsService } from '../../services/teams/teams.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateteamComponent } from '../../modals/createteam/createteam.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from '../../services/project.service'
 @Component({
   selector: 'app-teams',
@@ -17,7 +17,8 @@ export class TeamsComponent {
     private teamsService: TeamsService,
     private projectService: ProjectService,
     public dialog: MatDialog,
-    private route: ActivatedRoute // to get the company ID from the route parameters
+    private route: ActivatedRoute,
+    private router: Router // to get the company ID from the route parameters
   ) { }
 
   //      ngOnInit() {
@@ -44,6 +45,10 @@ export class TeamsComponent {
       // if it is provided in the route parameters
       if (params['cid']) {
         this.companyId = +params['cid']; // Convert to number if needed
+      }
+
+      if(localStorage.getItem('authenticated') != 'true') {
+        this.router.navigateByUrl('/')
       }
 
       this.admin = localStorage.getItem('admin') === 'true'

@@ -40,16 +40,11 @@ export class LoginComponent implements OnInit {
       console.log(user);
       // Store user data and whether admin privileges are active in localstorage
       localStorage.setItem('admin', JSON.stringify(user.admin))
-      localStorage.setItem('user', JSON.stringify(user))
+      localStorage.setItem('cid', JSON.stringify(user.companies[0].id))
+      localStorage.setItem('name', user.profile.firstName + " " + user.profile.lastName.charAt(0) + '.')
       localStorage.setItem('authenticated', 'true')
     })
     .then(() => {
-      // Waiting to implement this. Should they go to select company no matter what?
-      // if (this.admin) {
-      //   this.router.navigateByUrl('/company')
-      // } else {
-      //   this.router.navigateByUrl('/company/6/teams/11/projects')
-      // }
       this.router.navigateByUrl('/companies')
     })
     .catch((err) => console.log(err))
