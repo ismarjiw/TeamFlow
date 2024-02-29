@@ -19,7 +19,7 @@ export class AdduserComponent {
   phone: string = '';
   password: string = '';
   confirmPassword: string = '';
-  isAdmin: boolean = false;
+  isAdmin: string = 'false';
 
   @Output() userCreated = new EventEmitter<any>();
   addUserForm: FormGroup;
@@ -41,7 +41,7 @@ export class AdduserComponent {
       phone: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required],
-      isAdmin: [false, Validators.required]
+      isAdmin: ['false', Validators.required]
     });
   }
 
@@ -49,6 +49,11 @@ export class AdduserComponent {
     if (this.addUserForm.valid) {
       const formValues = this.addUserForm.value;
       
+      const credentials = {
+        username: formValues.email, 
+        password: formValues.password
+      };
+
       const userProfile: UserProfile = {
         firstName: formValues.firstName,
         lastName: formValues.lastName,
@@ -56,19 +61,13 @@ export class AdduserComponent {
         phone: formValues.phone
       };
 
-      const newUser: Employee = {
-        id: 0, // Assign a default value for now
+      const newUser = {
         profile: userProfile,
-        admin: formValues.isAdmin,
+        credentials,
+        admin: formValues.isAdmin ? true : false,
         active: true, // Set to true by default for new users
-        status: 'JOINED' // Hardcoded for testing
+        status: 'JOINED'  // Set to joined by default for new users
       };
-
-    //   {
-    //     "admin": "true",
-    //     "credentials": {"username": "matthew", "password": "hello"},
-    //     "profile": {"firstName": "Matthew", "lastName": "Oshimo", "email": "moshimo90696@gmail.com", "phone": "510-604-4520"}
-    // }
 
       this.usersService.createUser$(newUser)
         .subscribe((user: Employee) => {

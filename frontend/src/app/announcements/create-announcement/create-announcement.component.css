@@ -1,0 +1,27 @@
+.body{
+    background-color: rgb(0, 0, 125);
+    color: bisque;
+    border-radius: 20px;
+
+}
+button{
+    border-radius: 10px;
+    background-color:rgb(0, 135, 135);
+    padding:10px;
+    color: white;
+    margin: auto;
+    border-style:none;
+
+}
+mat-form-field{
+    margin:auto;
+}
+
+.input{
+padding: 10px;
+margin:auto;
+color: bisque;
+}
+.mat-form-field-appearance-fill .mat-form-field-flex{
+color: burlywood;
+}
