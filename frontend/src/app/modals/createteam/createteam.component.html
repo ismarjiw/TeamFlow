@@ -13,13 +13,13 @@
 <mat-form-field appearance="fill">
   <mat-label>Select Members</mat-label>
   <mat-select formControlName="selectedMembers" multiple>
-    <mat-option *ngFor="let member of members" [value]="member">{{ member }}</mat-option>
+    <mat-option *ngFor="let member of users" [value]="member">{{ member.profile.firstName }}</mat-option>
   </mat-select>
 </mat-form-field>
 <div mat-dialog-actions>
   <button class="add-team-btn" mat-button (click)="onSubmit()" type="submit">Create Team</button>
 </div>
-</form>  
+</form>
 </div>
 
 
