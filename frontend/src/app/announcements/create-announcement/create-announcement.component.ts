@@ -34,7 +34,7 @@ export class CreateAnnouncementComponent {
 
     // Grab companyId from URL
     this.route.params.subscribe(params => {
-      this.companyId = 6
+      this.companyId = params['cid']
     });
 
     // Get user from local storage for making announcements

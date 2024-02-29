@@ -25,7 +25,7 @@ export class AnnouncementsComponent implements OnInit {
 
     // Grab company id from URL
     this.route.params.subscribe(params => {
-      this.companyId = 6
+      this.companyId = params['cid']
       this.announceService.getAnnouncements(this.companyId)
       .then((announcements) => this.announcements = this.convertToArray(announcements))
     });
