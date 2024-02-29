@@ -81,3 +81,7 @@ mat-icon {
     padding:0;
     margin:0
 }
+
+.active-link, .active-link:visited {
+    color: #28e7db;
+}
