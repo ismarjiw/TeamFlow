@@ -39,7 +39,7 @@ export class CompanylistselectorComponent {
         console.log(selectedCompany); 
         this.companySelected.emit(selectedCompany);
         // Navigate to the route for the selected company's teams
-        this.router.navigate(['/company', selectedCompany?.id, 'teams']);
+        this.router.navigate(['/company', selectedCompany?.id, 'announcements']);
       });
     }
   }

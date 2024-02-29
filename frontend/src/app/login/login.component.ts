@@ -50,8 +50,7 @@ export class LoginComponent implements OnInit {
       // } else {
       //   this.router.navigateByUrl('/company/6/teams/11/projects')
       // }
-//       this.router.navigateByUrl('/company/6/teams/11/projects')
-this.router.navigateByUrl(`/company/6/teams`)
+      this.router.navigateByUrl('/companies')
     })
     .catch((err) => console.log(err))
   }

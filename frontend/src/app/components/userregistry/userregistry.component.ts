@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserregistryComponent {
 
+  companyId: number = -1
   displayedColumns: string[] = ['name', 'email', 'active', 'admin', 'status'];
   isLoading = false;
   users$: Observable<any[]>;
@@ -26,8 +27,8 @@ export class UserregistryComponent {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const companyId = params['companyId']; 
-      this.usersService.setCompanyId(companyId);
+      this.companyId = params['companyId']; 
+      this.usersService.setCompanyId(this.companyId);
     });
   }
 

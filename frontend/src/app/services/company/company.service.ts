@@ -45,7 +45,7 @@ export interface UserProfile {
 })
 export class CompanyService {
 
-  companiesUrl: string = 'http://localhost:8080/company'
+  companiesUrl: string = 'url/company'
 
   constructor(private http: HttpClient) { }
 
