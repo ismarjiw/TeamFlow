@@ -88,6 +88,8 @@ public class ProjectServiceImpl implements ProjectService {
 			p.setTeam(teamMapper.requestDtoToEntity(project.getTeam()));
 		}
 		
+		p.setActive(project.isActive());
+		
 		return projectMapper.entityToDto(projectRepository.saveAndFlush(p));
 	}
 	
