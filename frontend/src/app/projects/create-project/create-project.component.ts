@@ -28,6 +28,7 @@ export class CreateProjectComponent {
       status: ""
     }]
   }
+  admin: boolean = false;
 
   constructor(
     private projectService: ProjectService,
@@ -48,6 +49,7 @@ export class CreateProjectComponent {
     this.companyId = this.data.companyId
     this.teamId = this.data.teamId
 
+    this.admin = Boolean(localStorage.getItem('admin'))
     // TODO: implement once teamservice is merged
     // this.team = getTeam(this.teamId)
   }

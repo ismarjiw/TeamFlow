@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AdduserComponent } from '../../modals/adduser/adduser.component';
 import { Observable } from 'rxjs';
 import { Employee } from 'src/app/services/company/company.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-userregistry',
@@ -17,10 +17,12 @@ export class UserregistryComponent {
   displayedColumns: string[] = ['name', 'email', 'active', 'admin', 'status'];
   isLoading = false;
   users$: Observable<any[]>;
+  admin: boolean = false;
 
   constructor(private usersService: UsersService,
     public dialog: MatDialog,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
     ) {
       this.users$ = this.usersService.users$;
     }
@@ -30,6 +32,10 @@ export class UserregistryComponent {
       this.companyId = params['companyId']; 
       this.usersService.setCompanyId(this.companyId);
     });
+    this.admin = localStorage.getItem('admin') === 'true'
+    if(!this.admin) {
+      this.router.navigateByUrl('/')
+    }
   }
 
   openAddUserDialog() {

@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     .then((user: any) => {
       console.log(user);
       // Store user data and whether admin privileges are active in localstorage
-      localStorage.setItem('admin', user.admin.toString())
+      localStorage.setItem('admin', JSON.stringify(user.admin))
       localStorage.setItem('user', JSON.stringify(user))
       localStorage.setItem('authenticated', 'true')
     })

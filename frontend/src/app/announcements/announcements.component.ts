@@ -30,7 +30,7 @@ export class AnnouncementsComponent implements OnInit {
       .then((announcements) => this.announcements = this.convertToArray(announcements))
     });
 
-    this.admin = Boolean(localStorage.getItem('admin'))
+    this.admin = localStorage.getItem('admin') === 'true'
   }
 
   convertToArray(a: Set<Announcement>){

@@ -39,7 +39,7 @@ export class ProjectsComponent {
       .then((projects) => projects.map((project) => this.projects.set(project.id, project)))
     });
 
-    // this.admin = Boolean(localStorage.getItem('admin'))
+    this.admin = localStorage.getItem('admin') === 'true'
   }
 
   openCreateDialog() {
