@@ -1,0 +1,19 @@
+.new-button {
+    background-color: var(--header-color);
+    color: var(--secondary-text-color)
+}
+
+.back {
+    position:absolute;
+    color:var(--header-color);
+    font-size: 20px;
+    font-weight: 500;
+    margin: 40px 40px 0 30px;
+    left:0;
+    height:auto
+}
+
+.head-box {
+    align-items: center;
+    height: 10em;
+}

@@ -38,7 +38,6 @@ export class ProjectsComponent {
       this.projectService.getProjects(this.companyId, this.teamId)
       .then((projects) => projects.map((project) => this.projects.set(project.id, project)))
     });
-
     this.admin = localStorage.getItem('admin') === 'true'
   }
 

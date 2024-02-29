@@ -81,6 +81,9 @@ public class ProjectServiceImpl implements ProjectService {
 		if(project.getDescription() != null) {
 			p.setDescription(project.getDescription());
 		}
+		
+		p.setActive(project.isActive());
+		
 		if(project.getTeam() != null) {
 			p.setTeam(teamMapper.requestDtoToEntity(project.getTeam()));
 		}

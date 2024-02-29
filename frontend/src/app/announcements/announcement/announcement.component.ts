@@ -15,7 +15,6 @@ export class AnnouncementComponent {
     this.announceDate = Date.parse(this.announcement.date);
     let data = new Date(this.announceDate);
     this.date = data.toLocaleString('default', { month: 'long' }) + " " + data.getDate() + ", " + data.getFullYear();
-    console.log(data.toString()); 
   }
 
   convertDate(){
