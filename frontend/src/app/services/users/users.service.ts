@@ -37,8 +37,12 @@ export class UsersService {
     this.companyIdSubject.next(companyId);
   }
 
-  createUser$ = (user: Employee): Observable<any> => {
+  createUser$ = (user: any): Observable<any> => {
     return this.companyIdSubject.pipe(
+      tap(companyId => {
+        console.log('Creating user for company:', companyId); 
+        console.log('User object:', user);
+      }),
       switchMap(companyId => {
         if (companyId !== null) {
           const url = this.usersUrl.replace('{id}', companyId.toString());
@@ -54,7 +58,7 @@ export class UsersService {
       })
     );
   };
-  
+
   deleteUser$: (userId: number) => Observable<any> = (userId: number) => {
     return this.companyIdSubject.pipe(
       switchMap(companyId => {
