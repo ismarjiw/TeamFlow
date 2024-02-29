@@ -2,14 +2,6 @@ package com.cooksys.groupfinal.controllers;
 
 import java.util.Set;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import com.cooksys.groupfinal.entities.Team;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 
 @CrossOrigin(origins = {"http://localhost:4200"},
-		methods={RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH, RequestMethod.DELETE})
+methods={RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH, RequestMethod.DELETE})
 public class CompanyController {
 	
 	private final CompanyService companyService;
