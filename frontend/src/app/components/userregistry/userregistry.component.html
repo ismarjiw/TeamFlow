@@ -32,7 +32,7 @@
               'active-user': user.active === true,
               'inactive-user': user.active === false
             }"
-            > {{user.active}} </td>
+            > {{user.active ? "YES": "NO"}} </td>
           </ng-container>
         
           <ng-container matColumnDef="admin">
@@ -42,7 +42,7 @@
               'admin-user': user.admin === true,
               'worker-user': user.admin === false
             }"
-            > {{user.admin}} </td>
+            > {{user.admin ? "YES": "NO"}} </td>
           </ng-container>
 
           <ng-container matColumnDef="status">
