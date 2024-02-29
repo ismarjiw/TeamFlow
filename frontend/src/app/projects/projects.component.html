@@ -6,7 +6,9 @@
 		<h1 class="header">Projects for {{team.name}}</h1>
 	</div>
 	<div>
-		<button class="new-button" *ngIf="admin" (click)="openCreateDialog()">New</button>
+		<div class="button-wrapper">
+			<button class="new-button" *ngIf="admin" (click)="openCreateDialog()">New</button>
+		</div>
 		<div>
 			<app-project *ngFor="let project of projects | keyvalue" [project]="project.value"
 				(openDialog)="openEditDialog($event)"></app-project>

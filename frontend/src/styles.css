@@ -7,8 +7,8 @@
     --select-color: #5533FF;
     --loggedin-color: #F24E1E;
     --outline-color: #DEB992;
-    --active-color: #22DD2A;
-    --inactive-color: #DF0F0F;
+    --active-color: rgba(34, 221, 42, 0.75);
+    --inactive-color: rgba(223, 15, 15, 0.75);
     --main-font-family: 'Inter', system-ui, sans-serif;
 }
 

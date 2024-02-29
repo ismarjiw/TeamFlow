@@ -30,7 +30,7 @@ export class EditProjectComponent {
     this.projectForm = this.fb.group({
       name: [this.project.name, Validators.required],
       description: [this.project.description, Validators.required],
-      active: []
+      active: [this.project.active]
     });
   }
 
@@ -43,6 +43,7 @@ export class EditProjectComponent {
     // Pass obj to POST method and close modal
     this.projectService.editProject(this.data.companyId, this.data.teamId, this.project.id, { name: name, description: description, active: active })
       .then((project) => {
+        console.log(project)
         this.editedProject.emit(project);
         this.dialog.closeAll()
       })

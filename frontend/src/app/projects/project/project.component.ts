@@ -8,19 +8,7 @@ import { Project } from 'src/app/services/project.service';
 })
 
 export class ProjectComponent {
-  @Input() project: Project = {
-    id: 1,
-    date: "",
-    name: '',
-    description: '',
-    active: false,
-    team: {
-      name: '',
-      description: '',
-      users: [null]
-    }
-  }
-
+  @Input() project: any
   @Output() openDialog = new EventEmitter<number>()
 
   dialogEvent() {

@@ -1,6 +1,25 @@
+.button-wrapper {
+    margin:auto;
+    width: 70%;
+    text-align: right;
+}
+
 .new-button {
+    justify-self: start;
     background-color: var(--header-color);
-    color: var(--secondary-text-color)
+    color: var(--secondary-text-color);
+    border: none;
+	border-radius: 10px;
+    margin-bottom: 20px;
+	width: 5em;
+	height: 2em;
+	font-size: 17px;
+}
+
+.new-button:hover {
+    cursor: pointer;
+    background-color: #22cdc2;
+    transition: 0.45s;
 }
 
 .back {
@@ -13,7 +32,13 @@
     height:auto
 }
 
+.back:hover {
+    cursor: pointer;
+    color: #22cdc2;
+    transition:0.45s
+}
+
 .head-box {
     align-items: center;
-    height: 10em;
+    height: 7em;
 }
