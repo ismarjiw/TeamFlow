@@ -7,12 +7,26 @@ button{
     background-color: rgb(27, 160, 152);
     color:white;
     padding: 10px 40px;
-    margin-top: -20px;
-    margin-bottom: 20px;
+    margin-top: 40px;
 }
 
 button:hover {
     background-color: rgb(38, 214, 202);
     cursor: pointer;
     transition:0.45s
+}
+
+.gridder{
+    grid-template-columns: repeat(3, 1fr);
+    gap:10px;
+    align-items: center;
+    vertical-align: center;
+    display: grid;
+}
+
+.one{
+    grid-column: 2;
+}
+.two{
+    grid-column: 3;
 }
