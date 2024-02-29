@@ -74,7 +74,11 @@ export class TeamsComponent {
       panelClass: "custom",
       data: {companyId: this.companyId}
     } );
-    dialogRef.componentInstance.teamCreated.subscribe((team) => this.teams.push(team))
+    dialogRef.componentInstance.teamCreated.subscribe((team) => {
+      this.projectService.getProjects(this.companyId, team.id)
+      .then((projects: any[]) => {team.numberofproject = projects.length;})
+      this.teams.push(team)
+    })
   }
 
 }
