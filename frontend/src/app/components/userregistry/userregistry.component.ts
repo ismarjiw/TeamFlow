@@ -15,7 +15,7 @@ export class UserregistryComponent {
 
   companyId: number = -1
   displayedColumns: string[] = ['name', 'email', 'active', 'admin', 'status'];
-  isLoading = false;
+  isLoading = true;
   users$: Observable<any[]>;
   admin: boolean = false;
 
@@ -41,6 +41,10 @@ export class UserregistryComponent {
     if(!this.admin) {
       this.router.navigateByUrl('/')
     }
+
+    this.users$.subscribe(() => {
+      this.isLoading = false;
+    });
   }
 
   openAddUserDialog() {

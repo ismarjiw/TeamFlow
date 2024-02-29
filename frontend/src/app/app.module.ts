@@ -28,6 +28,7 @@ import { ProjectComponent } from './projects/project/project.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
 import { EditProjectComponent } from './projects/edit-project/edit-project.component';
 import { HttpClientModule } from '@angular/common/http';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     MatDialogModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

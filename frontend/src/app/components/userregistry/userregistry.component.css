@@ -1,3 +1,13 @@
+.user-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    margin-top: 20rem;
+}
+
 .user-title {
     color: var(--header-color);
     text-align: center;
