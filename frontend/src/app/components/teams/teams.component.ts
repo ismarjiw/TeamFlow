@@ -71,10 +71,9 @@ export class TeamsComponent {
   openCreateTeamDialog() {
     const dialogRef = this.dialog.open(CreateteamComponent, {
       width: '400px',
-      panelClass: "custom"
-
-
-    });
+      panelClass: "custom",
+      data: {companyId: this.companyId}
+    } );
     dialogRef.componentInstance.teamCreated.subscribe((team) => this.teams.push(team))
   }
 

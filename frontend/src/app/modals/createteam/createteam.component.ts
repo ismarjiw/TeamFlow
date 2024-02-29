@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -20,7 +20,7 @@ users:any[]=[];
   name: string = '';
   description: string = '';
   selectedMembers: any[] = [];
-companyId:number=6
+  companyId:number = -1
   @Output() teamCreated = new EventEmitter<any>();
   teamForm: FormGroup;
 
@@ -28,12 +28,13 @@ companyId:number=6
     public dialog: MatDialog,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private teamsService: TeamsService) {
+    private teamsService: TeamsService,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
       this.teamForm = this.fb.group({});
   }
 
   ngOnInit() {
-
+      this.companyId = this.data.companyId
       if (!this.companyId) {
           // If not set, initialize it to a default value
           this.companyId = 6;
