@@ -31,11 +31,14 @@ export class CreateAnnouncementComponent {
       title: ['', Validators.required],
       message: ['', Validators.required]
     });
-
     // Grab companyId from URL
     this.route.params.subscribe(params => {
       this.companyId = params['cid']
     });
+
+    let value = JSON.parse(localStorage.getItem('temp') || "{}");
+    this.companyId = value.temp;
+    console.log(this.companyId);
 
     // Get user from local storage for making announcements
     this.user = localStorage.getItem('user')
@@ -58,6 +61,7 @@ export class CreateAnnouncementComponent {
     // Pass obj to POST method and close modal
     this.announceService.createAnnouncement(this.companyId, announcement)
     .then((announcement) => {this.createdAnnoucement.emit(announcement) ; this.dialog.closeAll()})
+    localStorage.removeItem("temp");
   }
 
 }

@@ -7,12 +7,15 @@ import { Component, Input } from '@angular/core';
 })
 export class AnnouncementComponent {
   date: string = "";
-  announceDate: Date = new Date();
+  announceDate: number = 0;
   @Input() announcement: any = {}
 
 
   ngOnInit(){
-    this.announceDate = this.announcement.date;
+    this.announceDate = Date.parse(this.announcement.date);
+    let data = new Date(this.announceDate);
+    this.date = data.toLocaleString('default', { month: 'long' }) + " " + data.getDate() + ", " + data.getFullYear();
+    console.log(data.toString()); 
   }
 
   convertDate(){

@@ -46,8 +46,9 @@ export class AnnouncementsComponent implements OnInit {
   }
 
   openCreateAnnouncement() {
+    localStorage.setItem("temp",JSON.stringify({temp: this.companyId}))
     const dialogRef = this.dialog.open(CreateAnnouncementComponent)
-    dialogRef.componentInstance.createdAnnoucement.subscribe((announcment) => {this.announcements.push(announcment);this.announcements.sort((a,b) => b.id >= a.id ? 1 : -1);});
+    dialogRef.componentInstance.createdAnnoucement.subscribe((announcment) => { if(announcment.author != null && announcment.message != null && announcment.title != null){this.announcements.push(announcment)};this.announcements.sort((a,b) => b.id >= a.id ? 1 : -1);})
    }
 
     // Mock announcements 

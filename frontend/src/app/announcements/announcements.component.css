@@ -1,8 +1,9 @@
 .container{
     color: rgb(2, 169, 169);
+    align-items: center;
 }
 button{
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: rgb(2, 169, 169);
     color:white;
     padding: 10px;

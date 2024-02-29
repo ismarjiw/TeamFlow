@@ -1,9 +1,9 @@
 <app-navmenu [companyId]="companyId"></app-navmenu>
 <app-navmenu-mobile></app-navmenu-mobile>
 <div class="container">
-	<div style="border-top: rgb(164, 156, 0) 2px solid;margin-bottom: 10px; ">
+	<div style="border-top: rgb(164, 156, 0) 2px solid;margin-bottom: 10px; width: 50%">
 		<h1>Announcements</h1>
-		<button *ngIf="admin" (click)="openCreateAnnouncement()">New</button>
+		<button style="float: right; padding-left: 20px; padding-right: 20px;" *ngIf="admin" (click)="openCreateAnnouncement()">New</button>
 	</div>
 	<div style="border-top: rgb(164, 156, 0) 2px solid; max-width: 80%; margin: auto;" class="announcer">
 		<app-announcement *ngFor="let announcement of announcements" [announcement]="announcement"></app-announcement>
