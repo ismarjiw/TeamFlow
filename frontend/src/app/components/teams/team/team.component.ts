@@ -18,4 +18,6 @@ export class TeamComponent {
   @Input() name: string = ''
   @Input() totalProjects: number = 0;
   @Input() members: Member[] = [];
+  @Input() teamId: number = -1;
+  @Input() companyId: number = -1;
 }

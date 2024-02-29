@@ -3,7 +3,14 @@
     background-color: var(--box-color);
     border-radius: 1rem;
     width: 20rem;
+    height: 15rem;
     padding-bottom: 1rem;
+}
+
+.team-component:hover{
+    cursor:pointer;
+    background-color: #174e75;
+    transition: 0.45s;
 }
 
 .total-projects, .members {
@@ -28,7 +35,11 @@
 .member, .member li {
     list-style: none;
     text-align: center;
+    justify-content: center;
+    align-self: center;
     margin-right: 1rem;
+    height: 1rem;
+    height: 2rem;
 }
 
 .member li {
