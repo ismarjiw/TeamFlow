@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     // Logout user when routing to login page
     localStorage.clear()
   }
-  
+
   signIn = () => {
     if(this.email.errors || this.password.errors) {
       alert("email or password contains errors")
@@ -50,7 +50,8 @@ export class LoginComponent implements OnInit {
       // } else {
       //   this.router.navigateByUrl('/company/6/teams/11/projects')
       // }
-      this.router.navigateByUrl('/company/6/teams/11/projects')
+//       this.router.navigateByUrl('/company/6/teams/11/projects')
+this.router.navigateByUrl(`/company/6/teams`)
     })
     .catch((err) => console.log(err))
   }

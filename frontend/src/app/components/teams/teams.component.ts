@@ -3,7 +3,7 @@ import { TeamsService } from '../../services/teams/teams.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateteamComponent } from '../../modals/createteam/createteam.component';
 import { ActivatedRoute } from '@angular/router';
-
+import {ProjectService} from '../../services/project.service'
 @Component({
   selector: 'app-teams',
   templateUrl: './teams.component.html',
@@ -14,6 +14,7 @@ export class TeamsComponent {
 companyId: number = 6;
   constructor(
     private teamsService: TeamsService,
+    private projectService: ProjectService,
     public dialog: MatDialog,
     private route: ActivatedRoute // to get the company ID from the route parameters
     ) {}
@@ -50,17 +51,33 @@ ngOnInit() {
     this.teamsService.getTeamsByCompany(this.companyId).subscribe(
       (teams: any[]) => {
         this.teams = teams;
-      },
-      error => {
-        console.error('Error fetching teams:', error);
-      }
-    );
+        for (const team of this.teams) {
+              this.projectService.getProjects(this.companyId,team.id).then(
+                (projects: any[]) => {
+                  team.numberofproject = projects.length;
+
+                },
+                error => {
+                  console.error('Error fetching projects:', error);
+                }
+              );
+            }
+//             console.log(this.teams)
+          },
+          error => {
+            console.error('Error fetching teams:', error);
+          }
+        );
+
+
   }
 
   openCreateTeamDialog() {
     const dialogRef = this.dialog.open(CreateteamComponent, {
       width: '400px',
-      panelClass:"custom",
+      panelClass:"custom"
+
+
     });
 
 

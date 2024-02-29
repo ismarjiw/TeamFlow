@@ -10,9 +10,9 @@ import { ProjectsComponent } from './projects/projects.component';
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "announcements", component: AnnouncementsComponent },
-  { path: "company/:cid/teams/:tid/projects", component: ProjectsComponent},  
+  { path: "company/:cid/teams/:tid/projects", component: ProjectsComponent},
   {path: "companies", component: CompanylistselectorComponent},
-  { path: "company/:companyId/teams", component: TeamsComponent }, // Dynamic route for teams of a specific company
+  { path: "company/:cid/teams", component: TeamsComponent }, // Dynamic route for teams of a specific company
   {path: "company/:companyId/users", component: UserregistryComponent}
 ];
 
