@@ -39,6 +39,7 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	text-align: center;
+	padding-bottom: 40px;
 }
 
 .avatar-img {

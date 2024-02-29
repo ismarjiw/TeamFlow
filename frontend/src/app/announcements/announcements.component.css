@@ -10,3 +10,9 @@ button{
     margin-top: -20px;
     margin-bottom: 20px;
 }
+
+button:hover {
+    background-color: rgb(38, 214, 202);
+    cursor: pointer;
+    transition:0.45s
+}

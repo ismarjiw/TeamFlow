@@ -3,6 +3,7 @@
     font-family: var(--main-font-family);
     margin: auto;
     width: fit-content;
+    padding-bottom: 40px;
 }
 
 .all-teams {

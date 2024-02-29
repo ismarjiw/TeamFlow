@@ -10,6 +10,10 @@
     color: red;
 }
 
+img {
+    margin-bottom: 30px;
+}
+
 .email, .password {
     border: none;
     background-color: transparent;
