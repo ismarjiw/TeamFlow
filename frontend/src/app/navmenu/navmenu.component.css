@@ -38,3 +38,13 @@ h3 {
 .avatar-img {
 	margin: 0 30px;
 }
+
+
+.active-link, .active-link:visited {
+    color: var(--action-color);
+    text-decoration-line: underline;
+    text-decoration-color: #0b304a;
+    text-decoration-style: solid;
+	text-underline-offset: 15px;
+    text-decoration-thickness: 2px;
+}
