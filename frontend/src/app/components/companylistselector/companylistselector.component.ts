@@ -14,7 +14,7 @@ export class CompanylistselectorComponent {
     selectedCompany: string = ''; 
     companies$: Observable<any[]>
     companyForm: FormGroup;
-
+    admin: boolean = false;
     @Output() companySelected = new EventEmitter<any>();
 
     constructor(
@@ -29,6 +29,21 @@ export class CompanylistselectorComponent {
       this.companyForm = this.fb.group({
         company: ['', Validators.required],
     });
+    this.admin = localStorage.getItem('admin') === 'true'
+
+    if(localStorage.getItem('authenticated') != 'true') {
+      this.router.navigateByUrl('/')
+    }
+    
+    if(!this.admin) {
+      let cid = localStorage.getItem('cid')
+      if(cid) {
+        const id = parseInt(cid)
+        this.router.navigateByUrl(`/company/${id}/announcements`)
+      } else {
+        this.router.navigateByUrl(`/`)
+      }
+    }
     }
 
   onSubmit() {

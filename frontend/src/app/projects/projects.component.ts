@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Project, ProjectService } from '../services/project.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateProjectComponent } from './create-project/create-project.component';
@@ -11,7 +11,7 @@ import { EditProjectComponent } from './edit-project/edit-project.component';
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent {
-  constructor(private route: ActivatedRoute, private projectService: ProjectService, public dialog: MatDialog) {}
+  constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService, public dialog: MatDialog) {}
 
   companyId: number = -1
   teamId: number = -1
@@ -27,9 +27,9 @@ export class ProjectsComponent {
 
   ngOnInit(): void {
     // COMMENTED FOR DEV, UNCOMMENT ONCE DONE
-    // if(localStorage.getItem('authenticated') != 'true') {
-    //   this.router.navigateByUrl('/')
-    // }
+    if(localStorage.getItem('authenticated') != 'true') {
+      this.router.navigateByUrl('/')
+    }
 
     // Grab company and team id from URL, then get projects
     this.route.params.subscribe(params => {
@@ -39,7 +39,7 @@ export class ProjectsComponent {
       .then((projects) => projects.map((project) => this.projects.set(project.id, project)))
     });
 
-    // this.admin = Boolean(localStorage.getItem('admin'))
+    this.admin = localStorage.getItem('admin') === 'true'
   }
 
   openCreateDialog() {

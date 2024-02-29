@@ -9,6 +9,6 @@
 		<input matInput formControlName="description">
 	</mat-form-field>
 	<div mat-dialog-actions>
-		<button mat-button (click)="onSubmit()" type="submit">Create Project</button>
+		<button *ngIf="admin" mat-button (click)="onSubmit()" type="submit">Create Project</button>
 	</div>
 </form>

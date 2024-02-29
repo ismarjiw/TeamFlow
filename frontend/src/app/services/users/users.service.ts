@@ -15,12 +15,17 @@ export class UsersService {
 
   private companyIdSubject = new BehaviorSubject<number | null>(null);
 
+  private updatedUsersSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  updatedUsers$ = this.updatedUsersSubject.asObservable();
+
   users$ = this.companyIdSubject.pipe(
     tap(companyId => console.log('Company ID:', companyId)),
     switchMap(companyId => {
       if (companyId !== null) {
         const url = this.usersUrl.replace('{id}', companyId.toString());
-        return this.http.get<any[]>(url)
+        return this.http.get<any[]>(url).pipe(
+          tap(users => this.updatedUsersSubject.next(users)) // Push new users to updatedUsersSubject
+        );
       } else {
         // If companyId is null, return an empty array
         return [];
@@ -46,7 +51,13 @@ export class UsersService {
       switchMap(companyId => {
         if (companyId !== null) {
           const url = this.usersUrl.replace('{id}', companyId.toString());
-          return this.http.post<any>(url, user);
+          return this.http.post<any>(url, user).pipe(
+            tap(newUser => {
+              const currentUsers = this.updatedUsersSubject.value;
+              const updatedUsers = [...currentUsers, newUser];
+              this.updatedUsersSubject.next(updatedUsers);
+            })
+          );
         } else {
           throw new Error('Company ID is not set.');
         }
