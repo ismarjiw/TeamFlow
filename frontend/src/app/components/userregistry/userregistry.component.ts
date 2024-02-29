@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { UsersService } from '../../services/users/users.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AdduserComponent } from '../../modals/adduser/adduser.component';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Employee } from 'src/app/services/company/company.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -40,6 +40,7 @@ export class UserregistryComponent {
 
     dialogRef.componentInstance.userCreated.subscribe((newUser: Employee) => {
       console.log('New user added:', newUser);
+      this.users$ = this.usersService.updatedUsers$;
     });
   }
 
