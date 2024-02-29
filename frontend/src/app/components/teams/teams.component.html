@@ -9,11 +9,13 @@
         [name]="team.name"
         [totalProjects]="team.numberofproject"
         [members]="team.teammates"
+        [teamId]="team.id"
+        [companyId]="companyId"
     ></app-team>
+    </div>
     <button *ngIf="admin" class="add-team" (click)="openCreateTeamDialog()">
         <mat-icon class="icon-display" fontIcon="add"></mat-icon>
         New Team
     </button>
-    </div>
 </div>
 
