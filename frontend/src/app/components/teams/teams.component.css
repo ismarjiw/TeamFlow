@@ -1,3 +1,13 @@
+.teams-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    margin-top: 20rem;
+}
+
 .teams-container {
     color: var(--text-color);
     font-family: var(--main-font-family);
