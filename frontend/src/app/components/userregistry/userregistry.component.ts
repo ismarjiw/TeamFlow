@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { UsersService } from '../../services/users/users.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AdduserComponent } from '../../modals/adduser/adduser.component';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { Employee } from 'src/app/services/company/company.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -14,9 +14,8 @@ import { ActivatedRoute } from '@angular/router';
 export class UserregistryComponent {
 
   displayedColumns: string[] = ['name', 'email', 'active', 'admin', 'status'];
-
   isLoading = false;
-  users$: Observable<any[]>
+  users$: Observable<any[]>;
 
   constructor(private usersService: UsersService,
     public dialog: MatDialog,
@@ -30,10 +29,6 @@ export class UserregistryComponent {
       const companyId = params['companyId']; 
       this.usersService.setCompanyId(companyId);
     });
-
-    this.users$.subscribe(users => {
-      console.log(users); 
-    });
   }
 
   openAddUserDialog() {
@@ -43,14 +38,8 @@ export class UserregistryComponent {
     });
 
     dialogRef.componentInstance.userCreated.subscribe((newUser: Employee) => {
-      // Optional: Display a confirmation message
       console.log('New user added:', newUser);
-
-      // Optional: Perform additional logic
-
-      // If you need to trigger any action after adding a new user,
-      // you can do it here without explicitly fetching users again.
     });
-
   }
+
 }

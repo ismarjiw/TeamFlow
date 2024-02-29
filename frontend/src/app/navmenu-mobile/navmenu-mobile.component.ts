@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-navmenu-mobile',
@@ -7,7 +7,9 @@ import { Component } from '@angular/core';
 })
 export class NavmenuMobileComponent {
   menuShown: boolean = false
-
+  @Input() companyId: number = -1
+  @Input() teamId: number = -1
+  
   toggleMenu() {
     this.menuShown = !this.menuShown
   }
