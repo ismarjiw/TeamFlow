@@ -1,12 +1,11 @@
 <div class="announcer">
-<div style="vertical-align: top;">
-<div style="float: left; width:50%;">
-<p style="font-size: 25px;">{{announcement.author.profile.firstName}} {{announcement.author.profile.lastName}}</p>
-<p style="vertical-align: bottom; font-size: 15px; color: rgb(181,179,179);">{{announcement.title}}</p>
-</div>
-<div style="color: white 0.63; float: right; width: 50%; font-size: 14px;">
-<p style="font-size: 17px;">{{date}}</p>
-</div>
-</div>
-<p style="font-size: 14px; padding: 10px; vertical-align: bottom; text-align: left;">{{announcement.message}}</p>
+    <div style="vertical-align: center;">
+        <div style="float: left; width:50%; padding: 0 40px; text-align: left;">
+            <p style="font-size: 25px;">{{announcement.author.profile.firstName}}
+                {{announcement.author.profile.lastName}}</p>
+            <p style="vertical-align: bottom; font-size: 15px; color: rgb(181,179,179);">{{announcement.title}}</p>
+        </div>
+        <p style="font-size: 22px; margin-top: 30px; color: rgba(255,255,255,0.63)">{{date}}</p>
+    </div>
+    <p style="font-size: 14px; padding: 0 40px; vertical-align: bottom; text-align: left;">{{announcement.message}}</p>
 </div>
