@@ -1,3 +1,11 @@
+.active-user, .admin-user {
+    color: var(--active-color) !important;
+}
+
+.inactive-user, .worker-user {
+    color: var(--inactive-color) !important;
+}
+
 .user-content {
     display: flex;
     justify-content: center;
