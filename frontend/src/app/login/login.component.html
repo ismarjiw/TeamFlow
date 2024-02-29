@@ -9,12 +9,12 @@
 		<form [formGroup]="loginForm">
 			<div>
 				<input class="email" type="text" name="email" placeholder="email" formControlName="email"/>
-				<p *ngIf="email.errors?.['minlength'] && email.touched">Email must be at least 6 characters long</p>
-				<p *ngIf="email.errors?.['pattern'] && email.touched">Email must follow pattern "example&#64;example.domain"</p>
+				<p class="error" *ngIf="email.errors?.['minlength'] && email.touched">Email must be at least 6 characters long</p>
+				<p class="error" *ngIf="email.errors?.['pattern'] && email.touched">Email must follow pattern "example&#64;example.domain"</p>
 			</div>
 			<div>
 				<input class="password" type="password" name="password" placeholder="password" formControlName="password"/>
-				<p *ngIf="password.errors?.['minlength'] && password.touched">Password must be at least 6 characters long</p>
+				<p class="error" *ngIf="password.errors?.['minlength'] && password.touched">Password must be at least 6 characters long</p>
 			</div>
 			<button class="login-btn" (click)="signIn()">LOGIN</button>
 		</form>

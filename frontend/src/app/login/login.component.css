@@ -6,6 +6,10 @@
     padding-bottom: 3rem;
 }
 
+.error {
+    color: red;
+}
+
 .email, .password {
     border: none;
     background-color: transparent;
