@@ -15,13 +15,13 @@
             <div>
                 <h2><a routerLink="/company/{{companyId}}/announcements">Home</a></h2>
             </div>
-            <div>
+            <div *ngIf="admin">
                 <h2><a routerLink="/companies">Company</a></h2>
             </div>
             <div>
                 <h2><a routerLink="/company/{{companyId}}/teams">Teams</a></h2>
             </div>
-            <div>
+            <div *ngIf="admin">
                 <h2><a routerLink="/company/{{companyId}}/users">Users</a></h2>
             </div>
                 <h2><a routerLink="/">Logout</a></h2>

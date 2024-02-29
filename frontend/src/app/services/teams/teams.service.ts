@@ -14,7 +14,7 @@ export type Team = {
 export class TeamsService {
 
   // constructor(private http: HttpClient) { } // Uncomment when ready for backend
-// url: string = "http://localhost:8080"
+apiUrl: string = "http://localhost:8080/"
   private createdTeams: Team[] = [];
 constructor(private http: HttpClient) { }
   // Method to create a new team  \\ think about how to display # of projects when creating a team \\
@@ -53,7 +53,7 @@ constructor(private http: HttpClient) { }
 //  const url = `${this.apiUrl}/company/${companyId}/teams`;
 
      return new Observable<any[]>(observer => {
-       fetch(`/url/company/${companyId}/teams`)
+       fetch(`${this.apiUrl}company/${companyId}/teams`)
          .then(response => {
            if (!response.ok) {
 
@@ -76,7 +76,7 @@ getUsersByCompany(companyId: number): Observable<any[]> {
 //  const url = `${this.apiUrl}/company/${companyId}/teams`;
 
      return new Observable<any[]>(observer => {
-       fetch(`/url/company/${companyId}/users`)
+       fetch(this.apiUrl + `company/${companyId}/users`)
          .then(response => {
            if (!response.ok) {
 
@@ -105,7 +105,7 @@ getUsersByCompany(companyId: number): Observable<any[]> {
 //   }
 //
   createTeam(companyId:number, teamData: any): Promise<any> {
-    return fetch(`url/company/${companyId}/teams`,
+    return fetch(this.apiUrl + `company/${companyId}/teams`,
     			{
     				method: "POST",
     				headers: { "Content-Type": "application/json" },

@@ -27,7 +27,7 @@ export class AnnouncementService {
 	apiUrl: string = "http://localhost:8080/"
 
 	getAnnouncements(companyId: number) {
-		return fetch("url" + `/company/${companyId}/announcements/`,
+		return fetch(this.apiUrl + `company/${companyId}/announcements/`,
 		{
 			method: "GET",
 			headers: { "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export class AnnouncementService {
 
 	// Need to change announcement to an announcement object type and user to a user object once we figure all that out
 	createAnnouncement(companyId: number, announcement: Announcement) {
-		return fetch("url" + `/company/${companyId}/announcements`,
+		return fetch(this.apiUrl + `company/${companyId}/announcements`,
 			{
 				method: "POST",
 				headers: { "Content-Type": "application/json",

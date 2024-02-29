@@ -27,7 +27,7 @@ export class ProjectService {
 	apiUrl: string = "http://localhost:8080/"
 
 	getProjects(companyId: number, teamId: number): Promise<Project[]> {
-		return fetch(`url/company/${companyId}/teams/${teamId}/projects`,
+		return fetch(`${this.apiUrl}company/${companyId}/teams/${teamId}/projects`,
 			{
 				method: "GET"
 			})
@@ -37,7 +37,7 @@ export class ProjectService {
 
 	// Need to change announcement to an announcement object type and user to a user object once we figure all that out
 	createProject(companyId: number, teamId: number, project: Project) {
-		return fetch(`url/company/${companyId}/teams/${teamId}/projects`,
+		return fetch(`${this.apiUrl}company/${companyId}/teams/${teamId}/projects`,
 			{
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -48,7 +48,7 @@ export class ProjectService {
 	}
 
 	editProject(companyId: number, teamId: number, projectId: number, data: {name: string, description: string, active: boolean}) {
-		return fetch(`url/company/${companyId}/teams/${teamId}/projects/${projectId}`,
+		return fetch(`${this.apiUrl}company/${companyId}/teams/${teamId}/projects/${projectId}`,
 			{
 				method: "PATCH",
 				headers: { "Content-Type": "application/json" },
