@@ -8,8 +8,8 @@ import { Employee } from '../company/company.service';
 })
 export class UsersService {
 
-  private usersUrl = 'url/company/{id}/users';
-  private deleteUserUrl = 'url/company/{id}/user/{id}';
+  private usersUrl = 'http://localhost:8080/company/{id}/users';
+  private deleteUserUrl = 'http://localhost:8080/company/{id}/user/{id}';
 
   constructor(private http: HttpClient) { } 
 
