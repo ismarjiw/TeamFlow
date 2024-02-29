@@ -1,10 +1,9 @@
 <div class="mobile">
-    <!-- Will implement font awesome icons later -->
-    <!-- <i class="fa-solid fa-bars"></i> -->
     <div class="nav-container">
         <div>
             <img class="avatar-img" id="mobile-avatar" src="../../assets/placeholder.jpg" >
-            <div class="user">ACTING AS ADMIN</div>
+            <div *ngIf="!admin" class="user">{{name}}</div>   
+            <div *ngIf="admin" class="user">ACTING AS ADMIN</div>
         </div>
         <button mat-button class="menu-button" (click)="toggleMenu()">
             <mat-icon>menu</mat-icon>
