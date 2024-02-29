@@ -65,10 +65,6 @@ public class ProjectServiceImpl implements ProjectService {
 		
 		Project p = projecter.get();
 		
-		if(p.isActive() == false) {
-			throw new NotFoundException("project not found");
-		}
-		
 		Team team = p.getTeam();
 		
 		if(!team.getId().equals(teamId)) {
@@ -85,6 +81,9 @@ public class ProjectServiceImpl implements ProjectService {
 		if(project.getDescription() != null) {
 			p.setDescription(project.getDescription());
 		}
+		
+		p.setActive(project.isActive());
+		
 		if(project.getTeam() != null) {
 			p.setTeam(teamMapper.requestDtoToEntity(project.getTeam()));
 		}
