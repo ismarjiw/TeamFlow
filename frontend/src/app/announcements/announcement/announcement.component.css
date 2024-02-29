@@ -1,12 +1,13 @@
 .announcer{
     border-color: transparent;
-    background-color: rgb(0, 35, 152);
+    background-color: rgb(11, 45, 69);
     border-radius: 20px;
     width: 80%;
     align-items: left;
     margin: auto;
     margin-top: 5%;
     color: white;
+    stroke:black;
     padding: 10px;
     display: grid;
 }
