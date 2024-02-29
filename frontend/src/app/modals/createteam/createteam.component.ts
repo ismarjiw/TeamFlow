@@ -24,9 +24,6 @@ companyId:number=6
   @Output() teamCreated = new EventEmitter<any>();
   teamForm: FormGroup;
 
-  // Mock member list (replace with actual member data from db)
-//   members = ['Alice', 'Bob', 'Charlie', 'David', 'Emily'];
-
   constructor(
     public dialog: MatDialog,
     private fb: FormBuilder,
@@ -52,7 +49,6 @@ companyId:number=6
 
           // Rest of your logic goes here based on the updated this.companyId
         });
-//       this.teams = this.teamsService.getCreatedTeams();
       this.teamsService.getUsersByCompany(this.companyId).subscribe(
         (users: any[]) => {
           this.users = users;
@@ -80,7 +76,6 @@ companyId:number=6
       const name = this.teamForm.value.name;
       const description = this.teamForm.value.description;
       const selectedMemberNames = this.teamForm.value.selectedMembers;
-// console.log(name, description, selectedMemberNames);
       this.teamsService.createTeam(this.companyId,newTeam)
         .then((team: Team) => {
           console.log(team);

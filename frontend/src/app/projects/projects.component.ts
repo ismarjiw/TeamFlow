@@ -50,6 +50,5 @@ export class ProjectsComponent {
   openEditDialog(id: number) {
     const dialogRef = this.dialog.open(EditProjectComponent, {data: {companyId: this.companyId, teamId: this.teamId, project: this.projects.get(id)}})
     dialogRef.componentInstance.editedProject.subscribe((project) => this.projects.set(project.id, project))
-    console.log(this.projects)
   }
 }

@@ -21,18 +21,6 @@ export class TeamsComponent {
     private router: Router // to get the company ID from the route parameters
   ) { }
 
-  //      ngOnInit() {
-  //         this.teams = this.teamsService.getCreatedTeams();
-  //         // Assuming TeamsService has a method to fetch teams from the endpoint
-  //         this.teamsService.getTeamsByCompany(6).subscribe(
-  //           (teams: any[]) => {
-  //             this.teams = teams;
-  //           },
-  //           error => {
-  //             console.error('Error fetching teams:', error);
-  //           }
-  //         );
-  //       }
   ngOnInit() {
     if (!this.companyId) {
       // If not set, initialize it to a default value
@@ -87,41 +75,7 @@ export class TeamsComponent {
 
 
     });
-
-
+    dialogRef.componentInstance.teamCreated.subscribe((team) => this.teams.push(team))
   }
 
 }
-
-//***/ to get the company specific teams array \***\\
-// this.route.params.subscribe(params => {
-//   const companyId = +params['companyId']; // Assuming companyId is a number
-//   // Fetch teams associated with the company
-//   this.teamsService.getTeamsByCompany(companyId).subscribe(teams => {
-//     this.teams = teams;
-//   });
-// });
-
-//***/ Dummy data \***\\
-// teams = [
-//   {
-//     name: 'Team 1',
-//     totalProjects: 1,
-//     members: ['Sherry', 'Ismarji', 'Wolfy', 'Matthew']
-//   },
-//   {
-//     name: 'Team 2',
-//     totalProjects: 2,
-//     members: ['Sherry', 'Matthew']
-//   },
-//   {
-//     name: 'Team 3',
-//     totalProjects: 1,
-//     members: ['Sherry', 'Ismarji', 'Wolfy', 'Matthew']
-//   },
-//   {
-//     name: 'Team 4',
-//     totalProjects: 2,
-//     members: ['Sherry', 'Matthew']
-//   }
-// ]

@@ -13,7 +13,7 @@
 <mat-form-field appearance="fill">
   <mat-label>Select Members</mat-label>
   <mat-select formControlName="selectedMembers" multiple>
-    <mat-option *ngFor="let member of users" [value]="member">{{ member.profile.firstName }}</mat-option>
+    <mat-option *ngFor="let member of users" [value]="member">{{ member.profile.firstName }} {{member.profile.lastName.charAt(0)}}.</mat-option>
   </mat-select>
 </mat-form-field>
 <div mat-dialog-actions>
