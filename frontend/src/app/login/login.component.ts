@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     // Logout user when routing to login page
     localStorage.clear()
   }
-  
+
   signIn = () => {
     if(this.email.errors || this.password.errors) {
       alert("email or password contains errors")

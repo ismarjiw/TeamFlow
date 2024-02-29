@@ -9,10 +9,15 @@ import { ProjectsComponent } from './projects/projects.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
+<<<<<<< HEAD
+  { path: "announcements", component: AnnouncementsComponent },
+  { path: "company/:cid/teams/:tid/projects", component: ProjectsComponent},
+=======
   { path: "company/:cid/announcements", component: AnnouncementsComponent },
   { path: "company/:cid/teams/:tid/projects", component: ProjectsComponent},  
+>>>>>>> 9b0595668111ac671520c9ef5bf41f4192080ce7
   {path: "companies", component: CompanylistselectorComponent},
-  { path: "company/:companyId/teams", component: TeamsComponent }, // Dynamic route for teams of a specific company
+  { path: "company/:cid/teams", component: TeamsComponent }, // Dynamic route for teams of a specific company
   {path: "company/:companyId/users", component: UserregistryComponent}
 ];
 
