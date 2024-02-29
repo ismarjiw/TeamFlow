@@ -13,6 +13,12 @@
     margin-top: 2rem;
 }
 
+.add-user-btn:hover {
+    cursor: pointer;
+    background-color: #22cdc2;
+    transition: 0.45s;
+}
+
 .user-container {
     margin: 0 auto; /* Center the container horizontally */
     width: 80%;

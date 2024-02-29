@@ -24,6 +24,12 @@
     margin-left: 7.5rem;
 }
 
+.add-team-btn:hover {
+    cursor: pointer;
+    background-color: #22cdc2;
+    transition: 0.45s;
+}
+
 mat-form-field {
     margin-right: 1rem;
 }
