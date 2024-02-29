@@ -23,6 +23,12 @@
     padding: 0.5rem;
 }
 
+.company-btn:hover {
+    background-color: #26eadd;
+    cursor:pointer;
+    transition: 0.45s;
+}
+
 .select-company {
     border: none;
     color: var(--select-color);
@@ -32,3 +38,4 @@
     padding: 0.5rem;
     width: 15rem;
 }
+

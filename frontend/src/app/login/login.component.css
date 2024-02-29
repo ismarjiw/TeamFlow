@@ -40,6 +40,12 @@ img {
     margin-top: 2rem;
 }
 
+.login-btn:hover {
+    cursor: pointer;
+    background-color: var(--header-color);
+    transition: 0.45s;
+}
+
 .login-container {
     border: solid;
     border-color: #DEB992;
