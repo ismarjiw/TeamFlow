@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
       // Store user data and whether admin privileges are active in localstorage
       localStorage.setItem('admin', JSON.stringify(user.admin))
       localStorage.setItem('cid', JSON.stringify(user.companies[0].id))
+      localStorage.setItem('user', JSON.stringify(user))
       localStorage.setItem('name', user.profile.firstName + " " + user.profile.lastName.charAt(0) + '.')
       localStorage.setItem('authenticated', 'true')
     })
