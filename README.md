@@ -1,19 +1,41 @@
-Assessment 3
-===============================
-# Overview
+# 🚀 TeamFlow
 
-For this assessment students will work in a group(s) to write a full stack application. This will incorporate everything we learned in the classroom. Students will be given tasks across the full stack to ensure everyone works on all pieces of the application. The application will be managed in a simulated kan ban agile style and will make use of Github issues and the project board. During the first day of the assessment students will go through the ERD and wireframe that the stakeholders had a account lead put together for you. From these each team will need to create their own endpoint documentation and add it to the wiki. Once that's done each team should meet with their lead and plan out the project by creating issues and assigning each member their first 2-3 tasks. The target for the first week is to finish version 1.0 of their application and go through a demo of progress with their lead that morning. The target for the second week is to have a functional prototype to present to the full FT team and others from Cook Systems internal staff. All teams will have a cut-off time of 12pm CT the last Thursday of class. At that point they should begin putting together their presentation and practice it with their lead a minimum of 2 times that afternoon. The final Friday all teams will present that applications.
+## A Comprehensive Project Management Portal
 
----
+<img src="https://i.imgur.com/wEL2VKD.png" alt="TeamFlow App Screenshot" width="600">
 
-## ERD
+TeamFlow is a robust RESTful web application that empowers teams to streamline their project management workflows. With intuitive features for creating and managing announcements, teams, projects, and a user directory, TeamFlow offers a seamless experience for seamless collaboration.
 
-![Final ERD](https://user-images.githubusercontent.com/32781877/206259951-fe81a650-1d90-4c28-ae7a-571f649269d9.png)
+### Key Features
 
+- **🔐 Role-Based Authorization:** Ensure secure access and control with role-based authorization, granting appropriate permissions to different user types.
 
----
+- **📝 Announcements:** Keep your team informed by creating and managing announcements within the application.
 
-## Wireframe
+- **👥 Team Management:** Easily organize and manage teams, facilitating effective collaboration and project assignments.
 
-[Figma Wireframe Link](https://www.figma.com/file/huwXGJxW6BCIbk4p2QcZG2/Final-Prototype?node-id=0%3A1&t=BnbL9FVyQYeS41FC-1)
+- **📂 Project Tracking:** Create, update, and monitor projects, ensuring smooth progress and timely deliveries.
 
+- **📘 User Directory:** Access a comprehensive directory of users, enabling seamless communication and collaboration within your organization.
+
+### Under the Hood
+
+- **🛡️ Spring Boot:** Leveraged Spring Boot for building secure and scalable back-end REST APIs.
+
+- **📡 RESTful Architecture:** Implemented a RESTful architecture to handle CRUD operations and data management.
+
+- **💾 PostgreSQL Database:** Utilized a PostgreSQL database for efficient storage and retrieval of user roles, companies, announcements, teams, and project data.
+
+- **🔥 Angular Front-End:** Developed dynamic front-end views using Angular, enabling seamless integration with the back-end APIs and handling form submissions.
+
+- **🧪 Thorough Testing:** Rigorously tested back-end REST API endpoints using Postman to validate functionality and ensure robust error handling.
+
+### Getting Started
+
+To run the application locally, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/ismarjiw/TeamFlow.git`
+2. Set up the database and configure the connection settings: `see application.properties in backend folder`
+3. Build and run the back-end Spring Boot application.
+4. Install dependencies and start the Angular development server for the front-end: `npm install` `ng serve`
+5. Access the application at `http://localhost:4200`
