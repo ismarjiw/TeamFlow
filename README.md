@@ -39,3 +39,12 @@ To run the application locally, follow these steps:
 3. Build and run the back-end Spring Boot application.
 4. Install dependencies and start the Angular development server for the front-end: `npm install` `ng serve`
 5. Access the application at `http://localhost:4200`
+
+## ERD
+
+![Final ERD](https://user-images.githubusercontent.com/32781877/206259951-fe81a650-1d90-4c28-ae7a-571f649269d9.png)
+
+## API Documentation
+
+Detailed documentation for the Twitter API endpoints can be found in the [Wiki](https://github.com/your-username/twitter-api/wiki/API-Documentation). This includes information on available endpoints, request/response formats, and examples.
+
