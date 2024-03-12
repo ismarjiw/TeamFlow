@@ -46,5 +46,5 @@ To run the application locally, follow these steps:
 
 ## API Documentation
 
-Detailed documentation for the Twitter API endpoints can be found in the [Wiki](https://github.com/your-username/twitter-api/wiki/API-Documentation). This includes information on available endpoints, request/response formats, and examples.
+Detailed documentation for the API endpoints can be found in the [Wiki](https://github.com/ismarjiw/TeamFlow/wiki/Endpoint-Documentation). This includes information on available endpoints, request/response formats, and examples.
 
