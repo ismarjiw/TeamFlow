@@ -1,5 +1,6 @@
 .header-content {
     color: var(--header-color);
+    margin-top: 2rem;
 }
 
 .subtitle {
